@@ -22,6 +22,8 @@ import Orders from '../components/Orders';
 import MyItems from './MyItems';
 import { Ip } from '../constants/Ip';
 import AdminProfile from './AdminProfile';
+import AddAdmins from '../components/AddAdmins';
+import Users from '../components/Users';
   
 const { Header, Content, Footer, Sider } = Layout;
 function getItem(label, key, icon, children) {
@@ -170,7 +172,83 @@ const [Ordertype,setOrdertype] = useState("Pending");
     
      :
       <>
-      {UserData.Role==="SuperAdmin"?<h1>k</h1>: <div>
+      {UserData.Role==="SuperAdmin"?
+      
+      
+      
+      <Layout
+      style={{
+        minHeight: '100vh',
+      }}
+    >
+      <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
+          <div className="logo" />
+          <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
+         
+          <Menu.Item   onClick={()=>setscreen("DashBoard")}   >
+               
+            </Menu.Item>
+            <Menu.Item   onClick={()=>setscreen("DashBoard")}   >
+               
+               </Menu.Item>
+            <Menu.Item key="1" onClick={()=>setscreen("DashBoard")} icon={ <PieChartOutlined />}>
+                DashBoard
+            </Menu.Item>
+
+            <Menu.Item key="2" onClick={()=>setscreen("Profile")} icon={ <UserOutlined />}>
+                    Profile
+            </Menu.Item>
+
+            <Menu.Item key="5" onClick={()=>setscreen("Add Admins")} icon={ <TableOutlined />}>
+                      Add Admins
+            </Menu.Item>
+
+            
+ 
+            <SubMenu key="sub2" icon={<FileTextOutlined />} title="Users" onClick={()=>setscreen("Users")} icon={<ShoppingCartOutlined />}>
+           
+          
+            <Menu.Item key="4" onClick={()=>setOrdertype("Admins")}  >
+            Admins
+            </Menu.Item>
+            
+            <Menu.Item key="6" onClick={()=>setOrdertype("Customers")}  >
+            Customers
+            </Menu.Item>
+           
+           </SubMenu>
+           
+          </Menu>
+
+        </Sider>
+      <Layout className="site-layout">
+        <Header
+          className="site-layout-background"
+          style={{
+            padding: 0,
+          }}
+        />
+        <Content
+          style={{
+            margin: '0 16px',
+          }}
+        >
+          
+          <ConTent page={screen} data={UserData} Ordertype={Ordertype}/>
+        </Content>
+        <Footer
+          style={{
+            textAlign: 'center',
+          }}
+        >
+          copyright ©2023 Created by TRIGOVEX
+        </Footer>
+      </Layout>
+    </Layout>
+      
+      
+      
+      : <div>
 
       <h1>Admin error:- your are not an admin and you don't have any credential in this website . Please contact our Admins to get Access (eswarpavan5237@gmail.com)</h1>
       <button onClick={logout}>go back</button>
@@ -243,6 +321,17 @@ function ConTent(props)
       <MyItems id={props.data.AdminId}/>
     )
   }
+  if(props.page==="Add Admins"){
+    return(
+       <AddAdmins id={props.data.AdminId}/>
+    )
+  }
+  if(props.page==="Users"){
+    return(
+       <Users page={props.page} id={props.data.AdminId}/>
+    )
+  }
+
   }
   
   export default Dashboard;
