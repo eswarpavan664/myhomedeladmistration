@@ -335,9 +335,9 @@ function ConTent(props)
        <AddAdmins id={props.data.AdminId}/>
     )
   }
-  if(props.page==="Users"){
+  if(props.page==="Users" ){
     return(
-       <Users page={props.page} id={props.data.AdminId}/>
+       <Users page={props.Ordertype} id={props.data.AdminId}/>
     )
   }
 
