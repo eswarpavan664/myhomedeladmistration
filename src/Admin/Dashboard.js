@@ -24,6 +24,7 @@ import { Ip } from '../constants/Ip';
 import AdminProfile from './AdminProfile';
 import AddAdmins from '../components/AddAdmins';
 import Users from '../components/Users';
+import Loader from '../components/Loader';
   
 const { Header, Content, Footer, Sider } = Layout;
 function getItem(label, key, icon, children) {
@@ -88,6 +89,7 @@ useEffect(()=>{
 
 },[])
 const [Ordertype,setOrdertype] = useState("Pending");
+if(UserData){
   return (
     <> 
      {UserData.Role==="Admin"?
@@ -258,11 +260,18 @@ const [Ordertype,setOrdertype] = useState("Pending");
       </>
 
 
-}  
+      }  
 
     
     </>
   );
+
+}
+else{
+  return(  <Loader/>)
+ 
+}
+  
 
      
 }  

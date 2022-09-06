@@ -1,8 +1,9 @@
 import React,{useState,useEffect} from 'react'
 import { Ip } from './../constants/Ip';
+import Loader from './Loader';
 
 function Orders(props) {
-  const [Items,setItems] = useState();
+  const [Items,setItems] = useState([]);
     const GetItems=()=>{
       fetch(Ip+'/GetOrders?id='+props.id,{
         headers:new Headers({
@@ -51,9 +52,14 @@ function Orders(props) {
 
        }
        </div>
-      :<h1>No orders</h1>
-
+      :<h1>No Orders</h1>
+       
       }
+
+      {Items.length===0? <Loader/>: 
+null
+      }
+     
      </>
   )
 }
@@ -89,7 +95,7 @@ function ItemCards(props){
   return(
     <div>
 
-      {props.OrderStatus===props.displaytype ||props.OrderStatus==="AcceptedByDeliveryBoy" ? 
+      {props.OrderStatus===props.displaytype ? 
       
       <>
 

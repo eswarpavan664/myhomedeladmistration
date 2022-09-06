@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable no-unused-vars */
 import React,{useEffect,useState} from 'react'
 import Lodi from '../images/95530-password.json'
@@ -8,6 +9,10 @@ import {
 import { Button } from 'antd';
 import {useNavigate} from "react-router-dom";
 import { Ip } from '../constants/Ip';
+import TextAnimation from './../components/TextAnimation';
+import Img from '../images/WhatsApp Image 2022-09-06 at 10.45.23 PM.jpeg'
+
+import '../css/loginstyles.css'
 
 function Login() {
   let navigate = useNavigate();
@@ -62,57 +67,34 @@ fetch(Ip+"/AdminSignin",{
 console.log(Ip+"/AdminSignin")
 const [Screen,setScreen] = useState(1);
   return (
-    <div   class="container-fluid d-flex justify-content-around align-items-center" style={{height:window.innerHeight,backgroundColor:'#208bad'}} >
-
-      <div className='d-none d-xl-block'  >
-      <Player
-                    autoplay
-                    loop
-                    src={Lodi}
-                    style={{ height: '300px', width: '300px' }}
-                >
-                   
-                </Player>
-      </div>
-
-
-    <div class="col-6 row" style={{width:window.innerWidth * 80}} >
-		<div class=" main-content bg-success text-center">
-          <div class="col-md-4 text-center company__info">
-            <h4 class="company_title text-light" style={{fontFamily:'Times'}}>Placements</h4>
-          </div>
-			<div class="col-md-8 col-xs-12 col-sm-12 login_form ">
-				<div class="container-fluid">
-              <div class="row">
-                <h2 style={{fontFamily:'Times'}}>Log In</h2>
-              </div>
-              <div class="row">
-                    <form control="" class="form-group">
-                      <div class="row">
-                        <input type="text" name="username" id="username" class="form__input" placeholder="Username" value={email} onChange={(e)=> setEmail(e.target.value)}/>
-                      </div>
-                      <div class="row">
-                        <span class="fa fa-lock"></span> 
-                        <input type="password" name="password" id="password" class="form__input" placeholder="Password" value={password} onChange={(e)=> setPassword(e.target.value)}/>
-                      </div>
-                      <div class="row">
-                        <input type="checkbox" name="remember_me" id="remember_me" class="" />
-                        <label for="remember_me">Remember Me!</label>
-                      </div>
-                      <div class="row">
-                      
-                      </div>
-                    </form>
-                    <button class="btn btn-success" onClick={sendCred}>submit</button>
-              </div>
-					 
-				</div>
-			</div>
-		</div>
-	</div>
- 
- 
+    <div className='AdminLogin_back_'>
+    <div className='row m-0' style={{backgroundColor:"white",borderBottom:"2px solid lightgray"}}>
+        <div className='col-12 text-center'>
+            <h4>Admin Login</h4>
+        </div>
     </div>
+    <div className='container '>
+        <div className='row align-items-center'>
+            <div className='col-md-6 text-center'>
+                <div className='border pt-3 pb-5 admin_login_form__'>
+                    <h1 className='text-center'>Login</h1>
+                    <input style={{width:"80%"}}  value={email} onChange={(e)=> setEmail(e.target.value)} className="admin_login_form_inputs__" type={"text"} placeholder="Enter your email" /> <br /><br />
+                    <input style={{width:"80%"}} value={password} onChange={(e)=> setPassword(e.target.value)} className="admin_login_form_inputs__" type={"password"} placeholder="Enter your password" /><br />
+                    <div className="row">
+                    <div className="col-12 text-center mt-3">
+                    <button className="btn btn-info"  onClick={sendCred}>Login</button>
+                    </div>
+                    </div>
+                </div>
+                
+            </div>
+            <div className='col-md-6 adminLogin_con_ d-flex align-items-center justify-content-center'>
+                <img className='img-fluid' src={Img} />
+            </div>
+        </div>
+    </div>
+</div>
+
   )
 }
 
