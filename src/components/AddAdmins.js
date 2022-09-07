@@ -13,6 +13,7 @@ function AddAdmins(props) {
 
 
     const AddAdmin=()=>{
+
         fetch(Ip+"/AdminSignup",{
             method:"POST",
             headers: {

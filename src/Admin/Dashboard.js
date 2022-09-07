@@ -4,7 +4,9 @@
   
   import React, { useState,useEffect } from 'react';
   import { useNavigate } from 'react-router-dom';
- 
+  import { Player, Controls } from '@lottiefiles/react-lottie-player';
+
+  import Lodi from '../lotties/55385-worried.json'
 import {
   DesktopOutlined,
   FileOutlined,
@@ -83,6 +85,7 @@ function Dashboard(){
    }
    )
   }
+  
 useEffect(()=>{
  
   GetData();
@@ -92,12 +95,25 @@ const [Ordertype,setOrdertype] = useState("Pending");
 if(UserData){
   return (
     <> 
+    <div className='d-block d-md-none'>
+       
+      <Player
+                    autoplay
+                    loop
+                    src={Lodi}
+                    style={{ height: '300px', width: '300px' }}
+                >
+                   
+                </Player>
+                <h3>Super Admin Panel and Admin Panel only displayed on Desktop for Better Experience Try To Use Desktop Mode ): </h3>
+    </div>
      {UserData.Role==="Admin"?
-
+<div className="d-md-block d-none"> 
      <Layout
       style={{
         minHeight: '100vh',
       }}
+       
     >
       <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
           <div className="logo" />
@@ -171,13 +187,13 @@ if(UserData){
         </Footer>
       </Layout>
     </Layout>
-    
+    </div>
      :
       <>
       {UserData.Role==="SuperAdmin"?
       
       
-      
+      <div className="d-md-block d-none"> 
       <Layout
       style={{
         minHeight: '100vh',
@@ -248,7 +264,7 @@ if(UserData){
       </Layout>
     </Layout>
       
-      
+      </div>
       
       : <div>
 
