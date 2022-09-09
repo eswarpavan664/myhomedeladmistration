@@ -39,13 +39,15 @@ function DemoTest2(props) {
       setDisccription("");
       setPrice("");
       setFileData("");
-      window.location.reload()
+      setType("Item Type");
+      setVegOrNon("Select Veg/Nonveg")
+      alert("Item Added...")
   };
 
   const [ItemName,setItemName] = useState("");
   const [Price,setPrice] =useState("");
   const [Discription,setDisccription] =useState("");
-  const [VegOrNon,setVegOrNon] = useState(" Select Veg/Nonveg");
+  const [VegOrNon,setVegOrNon] = useState("Select Veg/Nonveg");
   const [Type,setType] =useState("Item Type")
 
   return (
