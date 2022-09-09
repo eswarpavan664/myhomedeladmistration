@@ -65,7 +65,7 @@ function ItemCards(props){
     var ur=props.ProductImage
 
     const DeleteItem=()=>{
-        fetch('http://'+Ip+':5000/deleteItem?id='+props._id,{
+        fetch(Ip+'/deleteItem?id='+props._id,{
             headers:new Headers({
               Authorization:"Bearer " 
             })

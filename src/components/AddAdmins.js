@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable no-undef */
 import React,{useState,useEffect} from 'react'
 import { Ip } from './../constants/Ip';
@@ -28,7 +29,8 @@ function AddAdmins(props) {
             "Role":"Admin",
             "ShopName":shopName,
             "AdminId":email,
-            "ShopPhoto":""
+            "ShopPhoto":"",
+            "ShopType":ShopType
            })
           })
           .then(res=>{
@@ -45,10 +47,26 @@ function AddAdmins(props) {
 
     }
 
+    const [ShopType,setShopType] =useState("Restaurant");
   return (
      <>
          <div class="container mt-5" style={{width:'50%'}}>
          <h1>New Admin</h1>
+         <div class="dropdown mt-2">
+         <label>Select Shop type: -</label>
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                   {ShopType}
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="#" onClick={()=>setShopType("Grocery")}>Grocery</a>
+                  <a class="dropdown-item" href="#" onClick={()=>setShopType("Restaurant")}>Restaurant</a>
+                  <a class="dropdown-item" href="#" onClick={()=>setShopType("Vegetable Shop")}>Vegetable Shop</a>
+                  <a class="dropdown-item" href="#" onClick={()=>setShopType("Meet Shop")}>Meet Shop</a>
+                  <a class="dropdown-item" href="#" onClick={()=>setShopType("Medical")}>Medical</a>
+             
+                </div>
+                      
+          </div>
               <div class="mb-3">
                 <label class="form-label">Admin Name</label>
                 <input class="form-control" type="text" value={Name} placeholder="enter Item Name" onChange={(e)=>setName(e.target.value)} id="formFile" />

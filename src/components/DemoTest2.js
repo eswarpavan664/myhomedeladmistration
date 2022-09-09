@@ -21,7 +21,9 @@ function DemoTest2(props) {
     data.append("ShopName",props.ShopName);
     data.append("ShopId",props.id);
     data.append("ItemId",props.id+ItemName);
-
+    data.append("AdminId",props.id+props.ShopName);
+    data.append("ItemType",Type);
+    data.append("ItemCategory",VegOrNon);
     fetch(Ip+"/single", {
       method: "POST",
       body: data,
@@ -43,6 +45,8 @@ function DemoTest2(props) {
   const [ItemName,setItemName] = useState("");
   const [Price,setPrice] =useState("");
   const [Discription,setDisccription] =useState("");
+  const [VegOrNon,setVegOrNon] = useState(" Select Veg/Nonveg");
+  const [Type,setType] =useState("Item Type")
 
   return (
     <div style={{width:'50%'}}>
@@ -65,6 +69,37 @@ function DemoTest2(props) {
             </div>
 
         <div class="container mt-5">
+            <div>
+
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  {VegOrNon}
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="#" onClick={()=>setVegOrNon("Veg")}>Veg</a>
+                  <a class="dropdown-item" href="#" onClick={()=>setVegOrNon("Non Veg")}>Non Veg</a>
+                   
+                </div>
+                      
+          </div>
+          
+          <div class="dropdown mt-2">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                   {Type}
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="#" onClick={()=>setType("Rice")}>Rice</a>
+                  <a class="dropdown-item" href="#" onClick={()=>setType("Ice Cream")}>Ice Cream</a>
+                  <a class="dropdown-item" href="#" onClick={()=>setType("Curry")}>Curry</a>
+                  <a class="dropdown-item" href="#" onClick={()=>setType("Bakery")}>Bakery</a>
+                  <a class="dropdown-item" href="#" onClick={()=>setType("Juice")}>Juice</a>
+                  <a class="dropdown-item" href="#" onClick={()=>setType("Starters")}>Starters</a>
+                </div>
+                      
+          </div>
+            </div>
+        
+            
               <div class="mb-3">
                 <label class="form-label">Enter product name</label>
                 <input class="form-control" type="text" value={ItemName} placeholder="enter Item Name" onChange={(e)=>setItemName(e.target.value)} id="formFile" />

@@ -49,25 +49,28 @@ const [Data,setData] =useState([]);
     {props.page==="Admins"?
 <>
     {Data.map((data)=>(
-    
-    <div class="card text-white bg-warning mb-3" style={{width:'20%',marginLeft:'2%',marginRight:'2%'}} >
-      <h3 class="card-header">{data.Name}</h3>
-      <div class="card-body">
-        <h5 class="card-title">{data.PhoneNumber}</h5>
-         {data.email?<h6 class="card-title">{data.email}</h6>:<h6>no email id</h6>}
-         {data.Address?<p class="card-text">{data.Address.split("_")[0]}</p>:null
+    <div className='col-md-3'>
+      <div class="card text-white bg-warning mb-3" style={{}} >
+        <h3 class="card-header">{data.Name}</h3>
+        <div class="card-body">
+          <h5 class="card-title">{data.PhoneNumber}</h5>
+            {data.email?<h6 class="card-title">{data.email}</h6>:<h6>no email id</h6>}
+            {data.Address?<p class="card-text">{data.Address.split("_")[0]}</p>:null
 
-         }
+            }
+        </div>
       </div>
     </div>
+    
       ))
     
       }
 
 </>:<>{Data.map((data)=>(
-    
-    <div class="card text-white bg-warning mb-3" style={{width:'20%',marginLeft:'2%',marginRight:'2%'}} >
-       {data.Name?<h5 class="card-header">{data.Name}</h5>:<h3>No Name</h3>}
+    <div className='col-md-3'>
+    <div class="card text-white  mb-3" style={{minHeight:"200px",boxShadow:"0 0 8px gray"}} >
+       {data.Name?<h5 class="text-dark text-center">{data.Name}</h5>:<h5 className='text-dark text-center' >No Name</h5>}
+       <hr style={{border:"1px solid black"}} />
       <div class="card-body">
         <h5 class="card-title">{data.PhoneNumber}</h5>
          {data.email?<h6 class="card-title">{data.email}</h6>:<h6>no email id</h6>}
@@ -75,6 +78,7 @@ const [Data,setData] =useState([]);
 
          }
       </div>
+    </div>
     </div>
       ))
     
