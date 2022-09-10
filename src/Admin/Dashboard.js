@@ -261,7 +261,7 @@ if(UserData){
             textAlign: 'center',
           }}
         >
-          copyright ©2023 Created by TRIGOVEX
+          © Copyright 2023 Trigovex Technologies Pvt. Ltd. All Rights Reserved
         </Footer>
       </Layout>
     </Layout>
