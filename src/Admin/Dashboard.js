@@ -67,13 +67,15 @@ function Dashboard(){
  }
 
   const [UserData,setData] = useState("")
- 
+ console.log("hhhg")
   const  GetData = async ()=>{
      const token = await  localStorage.getItem("token")
      console.log("Dashboard = "+token)
    fetch(Ip+'/GetAdmin',{
    headers:new Headers({
-     Authorization:"Bearer "+token
+     Authorization:"Bearer "+token,
+     'Content-Type': 'application/json',
+     'Accept': 'application/json'
    })
    }).then(res=>res.json())
    
@@ -185,7 +187,7 @@ if(UserData){
             textAlign: 'center',
           }}
         >
-          copyright ©2023 Created by TRIGOVEX
+          © Copyright 2023 Trigovex Technologies Pvt. Ltd. All Rights Reserved
         </Footer>
       </Layout>
     </Layout>
@@ -237,6 +239,25 @@ if(UserData){
             </Menu.Item>
            
            </SubMenu>
+
+           <SubMenu key="sub3" icon={<FileTextOutlined />} title="Orders" onClick={()=>setscreen("Orders")} icon={<ShoppingCartOutlined />}>
+           
+          
+           <Menu.Item key="10" onClick={()=>setOrdertype("Pending")}  >
+           Pending
+           </Menu.Item>
+           
+           <Menu.Item key="11" onClick={()=>setOrdertype("Delivered")}  >
+           Delivered
+           </Menu.Item>
+           <Menu.Item key="12" onClick={()=>setOrdertype("Accepted")}  >
+           Accepted
+           </Menu.Item>
+           <Menu.Item key="13" onClick={()=>setOrdertype("Declain")} >
+           Declined
+           </Menu.Item>
+
+          </SubMenu>
            
           </Menu>
 
@@ -351,7 +372,7 @@ function ConTent(props)
   if(props.page==="Orders")
   {
     return(
-      <Orders id={props.data.AdminId} Ordertype={props.Ordertype}/>
+      <Orders id={props.data.AdminId} Ordertype={props.Ordertype} userdata={props.data}/>
     )
   }
   if(props.page==="MyItems")

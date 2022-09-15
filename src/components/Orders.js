@@ -4,21 +4,44 @@ import Loader from './Loader';
 
 function Orders(props) {
   const [Items,setItems] = useState([]);
+  console.log(props.userdata.Role)
     const GetItems=()=>{
-      fetch(Ip+'/GetOrders?id='+props.id,{
-        headers:new Headers({
-          Authorization:"Bearer " 
-        })
-        }).then(res=>res.json())
-        .then(data=>{ 
-        
-         
-          setItems(data);
+
+      if(props.userdata.Role==="SuperAdmin")
+      {
+        fetch(Ip+'/GetOrdersForSuperAdmin',{
+          headers:new Headers({
+            Authorization:"Bearer " 
+          })
+          }).then(res=>res.json())
+          .then(data=>{ 
           
-              console.log(data);
            
-        }
-        )
+            setItems(data);
+            
+                console.log(data);
+             
+          }
+          )
+          
+      }
+      else{
+        fetch(Ip+'/GetOrders?id='+props.id,{
+          headers:new Headers({
+            Authorization:"Bearer " 
+          })
+          }).then(res=>res.json())
+          .then(data=>{ 
+          
+           
+            setItems(data);
+            
+                console.log(data);
+             
+          }
+          )
+
+      }
     }
     useEffect(()=>{
       setInterval(() => {
