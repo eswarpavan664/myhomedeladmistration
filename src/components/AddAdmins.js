@@ -4,47 +4,54 @@ import React,{useState,useEffect} from 'react'
 import { Ip } from './../constants/Ip';
 
 function AddAdmins(props) {
-    const [Name,setName] = useState();
-    const [email,setemail] =useState();
-    const [Password,setPassword] =useState();
-    const [Phonenumber,setPhoneNumber] =useState();
-    const [shopName,setShopName] = useState();
-    const [Address,setAddress] = useState();
+    const [Name,setName] = useState("");
+    const [email,setemail] =useState("");
+    const [Password,setPassword] =useState("");
+    const [Phonenumber,setPhoneNumber] =useState("");
+    const [shopName,setShopName] = useState("");
+    const [Address,setAddress] = useState("");
 
-
+const [DeliveryCharges,setDeliveryCharges] =useState("");
+const [DeliveryTime,setDeliveryTime] =useState("");
 
     const AddAdmin=()=>{
 
+        if(DeliveryCharges!=="" &&Name!=="" &&email!=="" &&Password!=="" &&Phonenumber!=="" &&shopName!=="" &&Address!=="" &&DeliveryTime!=="")
         fetch(Ip+"/AdminSignup",{
-            method:"POST",
-            headers: {
-             'Content-Type': 'application/json'
-           },
-           body:JSON.stringify({
-            "email":email,
-            "Name":Name,
-            "Address":Address,
-            "password":Password,
-            "PhoneNumber":Phonenumber,
-            "Role":"Admin",
-            "ShopName":shopName,
-            "AdminId":email,
-            "ShopPhoto":"",
-            "ShopType":ShopType
-           })
-          })
-          .then(res=>{
-            
-            alert("Admin created..")
-            setAddress("");
-            setName("");
-            setPassword("");
-            setPhoneNumber("");
-            setemail("");
-            setShopName("");
-
+          method:"POST",
+          headers: {
+           'Content-Type': 'application/json'
+         },
+         body:JSON.stringify({
+          "email":email,
+          "Name":Name,
+          "Address":Address,
+          "password":Password,
+          "PhoneNumber":Phonenumber,
+          "Role":"Admin",
+          "ShopName":shopName,
+          "AdminId":email,
+          "ShopPhoto":"",
+          "ShopType":ShopType,
+          "Deliverycharges":DeliveryCharges,
+          "DeliveryTime":DeliveryTime
+         })
         })
-
+        .then(res=>{
+          
+          alert("Admin created..")
+          setAddress("");
+          setName("");
+          setPassword("");
+          setPhoneNumber("");
+          setemail("");
+          setShopName("");
+          setDeliveryCharges("");
+          setDeliveryTime("");
+        })
+else{
+  alert("All Fields  are Required...")
+}
     }
 
     const [ShopType,setShopType] =useState("Restaurant");
@@ -91,6 +98,14 @@ function AddAdmins(props) {
               <div class="mb-3">
                 <label for="formFileMultiple" class="form-label">City Name</label>
                 <input class="form-control" type="text" value={Address} placeholder="enter City Name" onChange={(e)=>setAddress(e.target.value)} id="formFileDisabled" required />
+              </div>
+              <div class="mb-3">
+                <label for="formFileMultiple" class="form-label">Delivery Charges</label>
+                <input class="form-control" type="text" value={DeliveryCharges} placeholder="enter City Name" onChange={(e)=>setDeliveryCharges(e.target.value)} id="formFileDisabled" required />
+              </div>
+              <div class="mb-3">
+                <label for="formFileMultiple" class="form-label">Delivery Time</label>
+                <input class="form-control" type="text" value={DeliveryTime} placeholder="enter City Name" onChange={(e)=>setDeliveryTime(e.target.value)} id="formFileDisabled" required />
               </div>
               <div class="text-center">
 

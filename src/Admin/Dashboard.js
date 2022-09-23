@@ -84,11 +84,12 @@ function Dashboard(){
       
      setData(data);
      
-          console.log(data);
+          console.log("admin data  = = ",data);
     
    }
    )
   }
+  console.log("hhvdshsavd")
   
 useEffect(()=>{
  
@@ -145,8 +146,24 @@ if(UserData){
                     Add Items
             </Menu.Item>
  
-             
+            <SubMenu key="sub2" icon={<FileTextOutlined />} title="Orders" onClick={()=>setscreen("Orders")} icon={<ShoppingCartOutlined />}>
            
+          
+            <Menu.Item key="4" onClick={()=>setOrdertype("Pending")}  >
+            Pending
+            </Menu.Item>
+            
+            <Menu.Item key="6" onClick={()=>setOrdertype("Delivered")}  >
+            Delivered
+            </Menu.Item>
+            <Menu.Item key="7" onClick={()=>setOrdertype("Accepted")}  >
+            Accepted
+            </Menu.Item>
+            <Menu.Item key="8" onClick={()=>setOrdertype("Declain")} >
+            Declined
+            </Menu.Item>
+
+           </SubMenu>
            
           </Menu>
 

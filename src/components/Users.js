@@ -71,9 +71,9 @@ const [Data,setData] =useState([]);
     <div class="card text-white  mb-3" style={{minHeight:"200px",boxShadow:"0 0 8px gray"}} >
        {data.Name?<h5 class="text-dark text-center">{data.Name}</h5>:<h5 className='text-dark text-center' >No Name</h5>}
        <hr style={{border:"1px solid black"}} />
-      <div class="card-body">
+      <div class="card-body text-dark">
         <h5 class="card-title">{data.PhoneNumber}</h5>
-         {data.email?<h6 class="card-title">{data.email}</h6>:<h6>no email id</h6>}
+         {data.email?<h6 class="card-title text-truncate">{data.email}</h6>:<h6>no email id</h6>}
          {data.Address?<p class="card-text">{data.Address.split("_")[0]},{data.Address.split("_")[1]}-{data.Address.split("_")[2]}</p>:null
 
          }
