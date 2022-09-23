@@ -12,6 +12,7 @@
     "@testing-library/user-event": "^13.5.0",
     "antd": "^4.23.0",
     "chart.js": "^3.9.1",
+    "firebase": "^9.10.0",
     "react": "^18.2.0",
     "react-animated-text": "^0.1.4",
     "react-dom": "^18.2.0",

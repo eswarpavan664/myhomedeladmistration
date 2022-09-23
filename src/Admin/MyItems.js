@@ -38,7 +38,7 @@ function MyItems(props) {
           
           <ItemCards 
                Name={item.ItemName} 
-               ProductImage={Ip+"/"+item.ProductImage} 
+               ProductImage={item.ProductImage} 
                ItemPrice={item.ItemPrice}
                ItemDiscription={item.ItemDiscription}
                _id={item._id}

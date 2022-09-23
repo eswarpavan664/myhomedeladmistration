@@ -1,7 +1,62 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import { Ip } from './../constants/Ip';
 
+
+
+import { getDatabase, set ,push,child,onValue} from "firebase/database";
+import { storage ,databaseref,app,auth,database} from '../firebase';
+import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
+
+
 function DemoTest2(props) {
+
+  let user = auth.currentUser;
+  const [imgUrl, setImgUrl] = useState(null);
+  const [progresspercent, setProgresspercent] = useState(0);
+
+
+  var p = null;
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    const file = e.target[0]?.files[0]
+    if (!file) return;
+    const storageRef = ref(storage, `files/${file.name}`);
+    const uploadTask = uploadBytesResumable(storageRef, file);
+    
+    uploadTask.on("state_changed",
+      (snapshot) => {
+        const progress =
+          Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+        setProgresspercent(progress);
+      },
+      (error) => {
+        alert(error);
+      },
+      () => {
+        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+          setImgUrl(downloadURL)
+          p = downloadURL;
+          console.log(p);
+          onSubmitHandler();
+        });
+      }
+    );
+
+   
+     
+  }
+
+  const [Value, setValue] = React.useState();
+  const [value, setvalue] = React.useState('fruit');
+  const handleChange = (event) => {
+    setvalue(event.target.value);
+  };
+
+
+
+
+
   const [fileData, setFileData] = useState();
 
   const fileChangeHandler = (e) => {
@@ -9,10 +64,10 @@ function DemoTest2(props) {
   };
 
   const onSubmitHandler = (e) => {
-    e.preventDefault();
+   
 
     // Handle File Data from the state Before Sending
-    const data = new FormData();
+   /* const data = new FormData();
 
     data.append("image", fileData);
     data.append("ItemName",ItemName);
@@ -23,18 +78,55 @@ function DemoTest2(props) {
     data.append("ItemId",props.id+ItemName);
     data.append("AdminId",props.id+props.ShopName);
     data.append("ItemType",Type);
-    data.append("ItemCategory",VegOrNon);
-    fetch(Ip+"/single", {
+    data.append("ItemCategory",VegOrNon);*/
+
+    fetch(Ip+"/AddItems",{
+      method:"POST",
+      headers: {
+       'Content-Type': 'application/json'
+     },
+     body:JSON.stringify({
+      "ProductImage":p,
+      "ItemName":ItemName,
+      "ItemPrice":Price,
+      "ItemDiscription":Discription,
+      "ShopName":props.ShopName,
+      "ShopId":props.id,
+      "ItemId":props.id+ItemName,
+      "AdminId":props.id+props.ShopName,
+      "ItemType":Type,
+      "ItemCategory":VegOrNon
+
+     })
+    })
+    .then(res=>{
+  
+      console.log("done",res);
+       
+    })
+  
+   /* fetch(Ip+"/AddItems", {
       method: "POST",
-      body: data,
-      
+      body:JSON.stringify({
+        "ProductImage":p,
+        "ItemName":ItemName,
+        "ItemPrice":Price,
+        "ItemDiscription":Discription,
+        "ShopName":props.ShopName,
+        "ShopId":props.id,
+        "ItemId":props.id+ItemName,
+        "AdminId":props.id+props.ShopName,
+        "ItemType":Type,
+        "ItemCategory":VegOrNon
+
+       })
     })
       .then((result) => {
         console.log("File Sent Successful",result);
       })
       .catch((err) => {
         console.log(err.message);
-      });
+      });*/
       setItemName("");
       setDisccription("");
       setPrice("");
@@ -115,16 +207,18 @@ function DemoTest2(props) {
                 <label for="exampleFormControlTextarea1" class="form-label">Description about the item</label>
                 <textarea class="form-control" type="text" value={Discription} placeholder="enter Item Discription" onChange={(e)=>setDisccription(e.target.value)} id="exampleFormControlTextarea1" rows="3"></textarea>
               </div>
-              <div class="mb-3">
-                <label for="formFileMultiple" class="form-label">Upload item picture</label>
-                <input class="form-control" type="file" onChange={fileChangeHandler}  id="formFileMultiple" multiple />
-              </div>
-              <div class="text-center">
-
-                  <button class="btn btn-outline-primary">Add Item</button>
-              </div>
+              
+               
         </div>
       </div>
+      </form>
+      <form onSubmit={handleSubmit} className='form'>
+      <div class="mb-3">
+                
+                <input type='file' />
+              </div>
+       
+        <button type='submit' class="btn btn-outline-primary text-center" >Submit</button>
       </form>
     </div>
   );
