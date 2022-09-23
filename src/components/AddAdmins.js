@@ -70,6 +70,7 @@ else{
                   <a class="dropdown-item" href="#" onClick={()=>setShopType("Vegetable Shop")}>Vegetable Shop</a>
                   <a class="dropdown-item" href="#" onClick={()=>setShopType("Meet Shop")}>Meet Shop</a>
                   <a class="dropdown-item" href="#" onClick={()=>setShopType("Medical")}>Medical</a>
+                  <a class="dropdown-item" href="#" onClick={()=>setShopType("Fresh")}>Fresh</a>
              
                 </div>
                       
