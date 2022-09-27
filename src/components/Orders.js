@@ -140,8 +140,8 @@ function ItemCards(props){
                         {items.map((item,i)=>(
                            <div style={{flexDirection:'column'}}>
                            <p>{item.split("_")[0]}</p>
-                           <p>Rs. {item.split("_")[2]}</p>
-                           <p>x{item.split("_")[3]}</p>
+                           <p>Rs. {item.split("_")[1]}</p>
+                           <p>x{item.split("_")[2]}</p>
                            </div>
                         ))
 
