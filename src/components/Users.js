@@ -90,7 +90,7 @@ function CustomerCard(props){
 }
   return(
     <div className='col-md-3'>
-    <div class="card text-white  mb-3" style={{minHeight:"200px",boxShadow:"0 0 8px gray"}} >
+    <div class="card text-white  mb-3" style={{minHeight:"300px",boxShadow:"0 0 8px gray",maxHeight:"500px"}} >
        {props.Name?<h5 class="text-dark text-center">{props.Name}</h5>:<h5 className='text-dark text-center' >No Name</h5>}
        <hr style={{border:"1px solid black"}} />
       <div class="card-body text-dark">
@@ -100,7 +100,7 @@ function CustomerCard(props){
 
          }
       </div>
-      <button className='text-danger' style={{borderRadius:10,backgroundColor:'gray',color:'white'}} onClick={DeleteAdmin}> <h6 style={{color:'white',fontSize:20}}>Delete</h6></button>
+      <button className=' btn btn-danger text-light m-0 py-2' onClick={DeleteAdmin}>Delete</button>
     </div>
     </div>
   )
