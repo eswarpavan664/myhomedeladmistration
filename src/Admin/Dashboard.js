@@ -22,13 +22,14 @@ import {
 import {CChart } from '@coreui/react-chartjs';
 import { Breadcrumb, Layout, Menu } from 'antd';
 import AddItems from '../components/AddItems';  
-import Orders from '../components/Orders';
+import {Orders} from '../components/Orders';
 import MyItems from './MyItems';
 import { Ip } from '../constants/Ip';
 import AdminProfile from './AdminProfile';
 import AddAdmins from '../components/AddAdmins';
 import Users from '../components/Users';
 import Loader from '../components/Loader';
+import AdminPanel from '../components/AdminPanel';
   
 const { Header, Content, Footer, Sider } = Layout;
 function getItem(label, key, icon, children) {
@@ -96,22 +97,25 @@ useEffect(()=>{
   GetData();
 
 },[])
+
+
+const Changer=(e)=>{
+  setscreen(e);
+  console.log(e);
+
+}
+
+
+const Chan=(e)=>{
+  setOrdertype(e);
+  console.log(e);
+
+}
 const [Ordertype,setOrdertype] = useState("Pending");
 if(UserData){
   return (
     <> 
-    <div className='d-block d-md-none'>
-       
-      <Player
-                    autoplay
-                    loop
-                    src={Lodi}
-                    style={{ height: '300px', width: '300px' }}
-                >
-                   
-                </Player>
-                <h3>Super Admin Panel and Admin Panel only displayed on Desktop for Better Experience Try To Use Desktop Mode ): </h3>
-    </div>
+    
      {UserData.Role==="Admin"?
 <div className="d-md-block d-none"> 
      <Layout
@@ -198,79 +202,16 @@ if(UserData){
       {UserData.Role==="SuperAdmin"?
       
       
-      <div className="d-md-block d-none"> 
+      <div > 
       <Layout
       style={{
         minHeight: '100vh',
       }}
     >
     
-      <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
-          <div className="logo" />
-          <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
-         
-          <Menu.Item   onClick={()=>setscreen("DashBoard")}   >
-               
-            </Menu.Item>
-            <Menu.Item   onClick={()=>setscreen("DashBoard")}   >
-               
-               </Menu.Item>
-            <Menu.Item key="1" onClick={()=>setscreen("DashBoard")} icon={ <PieChartOutlined />}>
-                DashBoard
-            </Menu.Item>
-
-            <Menu.Item key="2" onClick={()=>setscreen("Profile")} icon={ <UserOutlined />}>
-                    Profile
-            </Menu.Item>
-
-            <Menu.Item key="5" onClick={()=>setscreen("Add Admins")} icon={ <TableOutlined />}>
-                      Add Admins
-            </Menu.Item>
-
-            
- 
-            <SubMenu key="sub2" icon={<FileTextOutlined />} title="Users" onClick={()=>setscreen("Users")} icon={<ShoppingCartOutlined />}>
-           
-          
-            <Menu.Item key="4" onClick={()=>setOrdertype("Admins")}  >
-            Admins
-            </Menu.Item>
-            
-            <Menu.Item key="6" onClick={()=>setOrdertype("Customers")}  >
-            Customers
-            </Menu.Item>
-           
-           </SubMenu>
-
-           <SubMenu key="sub3" icon={<FileTextOutlined />} title="Orders" onClick={()=>setscreen("Orders")} icon={<ShoppingCartOutlined />}>
-           
-          
-           <Menu.Item key="10" onClick={()=>setOrdertype("Pending")}  >
-           Pending
-           </Menu.Item>
-           
-           <Menu.Item key="11" onClick={()=>setOrdertype("Delivered")}  >
-           Delivered
-           </Menu.Item>
-           <Menu.Item key="12" onClick={()=>setOrdertype("Accepted")}  >
-           Accepted
-           </Menu.Item>
-           <Menu.Item key="13" onClick={()=>setOrdertype("Declain")} >
-           Declined
-           </Menu.Item>
-
-          </SubMenu>
-           
-          </Menu>
-
-        </Sider>
+       <AdminPanel changer={Changer} chan={Chan}/>
       <Layout className="site-layout">
-        <Header
-          className="site-layout-background"
-          style={{
-            padding: 0,
-          }}
-        />
+        
         <Content
           style={{
             margin: '0 16px',
@@ -279,13 +220,7 @@ if(UserData){
           
           <ConTent page={screen} data={UserData} Ordertype={Ordertype}/>
         </Content>
-        <Footer
-          style={{
-            textAlign: 'center',
-          }}
-        >
-          © Copyright 2023 Trigovex Technologies Pvt. Ltd. All Rights Reserved
-        </Footer>
+       
       </Layout>
     </Layout>
       
