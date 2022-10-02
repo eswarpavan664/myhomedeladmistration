@@ -35,7 +35,12 @@ function Orders(props) {
           
            
             setItems(data);
-            
+            if(data.length>0){
+              setStatus(1)
+            }
+            else if(data.length===0){
+              setStatus(2)
+            }
                 console.log(data);
              
           }
@@ -43,6 +48,8 @@ function Orders(props) {
 
       }
     }
+
+    const [Status,setStatus] =useState(0);
     useEffect(()=>{
       setInterval(() => {
         GetItems();
@@ -52,7 +59,9 @@ function Orders(props) {
     console.log(props.Ordertype)
   return (
      <>
-       
+       {Status===2?
+          <h1>No Orders</h1>:null
+       }
       {Items?  
       <div className='container mt-5'> 
       {Items.map((item)=>(
@@ -76,12 +85,12 @@ function Orders(props) {
 
        }
        </div>
-      :<h1>No Orders</h1>
+      :null
        
       }
 
       {Items.length===0? <Loader/>: 
-null
+            null
       }
      
      </>
@@ -154,7 +163,7 @@ function ItemCards(props){
 
                         }
                     </div>
-                    <div class="col-md-3 text-center">
+                    <div class="col-md-3 col-4 ">
                         <button class="btn btn-secondary">Order Status:- {props.OrderStatus}</button>
                     </div>
                     <div class="col-8 col-md-3">
