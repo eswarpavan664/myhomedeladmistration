@@ -1,23 +1,62 @@
-.AdminLogin_back_{
+.login_page_back_{
+  
+  height: 120vh;
+}
+.login_header_{
   height: auto;
-  background-image: url('https://static.vecteezy.com/system/resources/previews/003/557/259/original/abstract-fluid-background-with-blue-color-free-vector.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
-  padding-bottom: 25px;
-}
-.admin_login_form__{
-  backdrop-filter: blur(5px);
-  background-color: rgba(0, 0, 0, 0.2);
-  border-radius: 15px;
-}
-.adminLogin_con_{
-  height: auto;
-  padding: 43px 0;
-}
-.admin_login_form_inputs__{
+  box-shadow: 0 1px 10px gray;
+  border-bottom-left-radius: 10%;
+  border-bottom-right-radius: 10%;
   background-color: white;
-  border-radius: 8px;
 }
-.admin_login_form_inputs__:focus{
-  border-bottom: 1px solid gray;
+.land_page{
+  background-color: inherit;
+ 
+  border:none;
+  border-bottom: 1px solid black;
+  
+}
+.land_page:focus{
+  background-color: lightgray;
+  border-bottom: 1px solid black;
+  outline: none;
+}
+.login_button_{
+  font-size: 15px;
+  padding: 8px;
+  background-color: #90EE90;
+  border-radius: 10px;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+.login_button_:focus{
+  outline: none;
+  border: none;
+  box-shadow: 0 0 10px 5px rgba(240, 128, 128, 0.5);
+}
+.login_signup_text{
+  color: #65A765;
+  background-color: #E6FFE6;
+  display: inline;
+  padding: 10px;
+  border-radius: 20px;
+}
+.input_item input{
+  background-color: inherit;
+  border:none;
+  border-bottom: 1px solid  gray;
+}
+.input_item input:focus{
+  background-color: inherit;
+  outline: none;
+  border:none;
+  border-bottom: 1px solid  gray;
+  box-shadow: none;
+}
+.searchbar:focus{
+
+  border: none;
+  outline: none;
+  box-shadow: none;
 }

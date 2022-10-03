@@ -11,7 +11,7 @@ import {useNavigate} from "react-router-dom";
 import { Ip } from '../constants/Ip';
 import TextAnimation from './../components/TextAnimation';
 import Img from '../images/WhatsApp Image 2022-09-06 at 10.45.23 PM.jpeg'
-
+import Chef from '../images/H LOGO copy.png'
 import '../css/loginstyles.css'
 
 function Login() {
@@ -67,32 +67,57 @@ fetch(Ip+"/AdminSignin",{
 console.log(Ip+"/AdminSignin")
 const [Screen,setScreen] = useState(1);
   return (
-    <div className='AdminLogin_back_'>
-    <div className='row m-0' style={{backgroundColor:"white",borderBottom:"2px solid lightgray"}}>
-        <div className='col-12 text-center'>
-            <h4>Admin Login</h4>
+    <div className='login_page_back_'>
+    <div className='login_header_ row m-0'>
+        <div className='text-center col-12'>
+            <img className='img-fluid' src={Chef}  style={{overflow:"hidden"}} width="220" />
         </div>
+         <p  style={{fontSize:25,fontWeight:'bold',textAlign:'center'}}>My HomeDel</p>
     </div>
-    <div className='container '>
-        <div className='row align-items-center'>
-            <div className='col-md-6 text-center'>
-                <div className='border pt-3 pb-5 admin_login_form__'>
-                    <h1 className='text-center'>Login</h1>
-                    <input style={{width:"80%"}}  value={email} onChange={(e)=> setEmail(e.target.value)} className="admin_login_form_inputs__" type={"text"} placeholder="Enter your email" /> <br /><br />
-                    <input style={{width:"80%"}} value={password} onChange={(e)=> setPassword(e.target.value)} className="admin_login_form_inputs__" type={"password"} placeholder="Enter your password" /><br />
-                    <div className="row">
-                    <div className="col-12 text-center mt-3">
-                    <button className="btn btn-info"  onClick={sendCred}>Login</button>
-                    </div>
-                    </div>
+
+    <div className='row'>
+        <div className='container col-12 text-center mb-2 mt-5 d-flex justify-content-evenly'>
+                <p className='  font-weight-bold login_signup_text px-5' style={{textDecoration:"none",cursor:"pointer"}}  >Signup</p>
+                 
+
+            </div>
+    </div>
+
+    <div className='container text-center login_form_cont_ mt-3'>
+        
+        
+          <div className='bg-light p-4 px-5  mb-md-0 mb-5 ' style={{display:"inline-block",minWidth:"60%",maxWidth:"100%",borderRadius:"15px",boxShadow:"0 0 10px lightgray"}}>
+          
+
+
+
+          <div className='row'>
+
+                            <h4 className='col-12 text-left pb-4' style={{borderBottom:"1px solid gray"}} >Signup</h4>
+                        </div>
+        <form >
+  
+       
+
+                <div className='row'>
+                    <label className='col-12' style={{textAlign:"left"}}>Email Address</label>
                 </div>
-                
-            </div>
-            <div className='col-md-6 adminLogin_con_ d-flex align-items-center justify-content-center'>
-                <img className='img-fluid' src={Img} />
-            </div>
+                <input type={"text"} placeholder="Enter your email" value={email} onChange={(e)=> setEmail(e.target.value)} style={{border:"1px solid gray",borderRadius:"50px",backgroundColor:"white",padding:"8px",marginBottom:"10px",width:"100%"}} required   /><br />
+              
+               <div className='row'>
+                    <label className='col-12' style={{textAlign:"left"}}>Password</label>
+                </div>
+                <input type={"Password"} placeholder="Enter Password"  value={password} onChange={(e)=> setPassword(e.target.value)}  style={{border:"1px solid gray",borderRadius:"50px",backgroundColor:"white",padding:"8px",marginBottom:"10px",width:"100%"}}  /><br />
+              
+                         
+  </form>
+  <div className='row'>
+            <button  className='col-md-2 col-6 offset-3 offset-md-5 login_button_ mt-5' style={{fontSize:20}}   onClick={sendCred}>Login</button>
         </div>
-    </div>
+  </div>
+                       
+  </div>
+       
 </div>
 
   )
