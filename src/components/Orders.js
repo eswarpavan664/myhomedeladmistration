@@ -32,7 +32,7 @@ function Orders(props) {
           
       }
       else{
-        fetch(Ip+'/GetOrders?id='+props.id+"&type="+props.Ordertype,{
+        fetch(Ip+'/GetOrders?id='+props.id+"&Type="+props.Ordertype,{
           headers:new Headers({
             Authorization:"Bearer " 
           })
@@ -47,7 +47,7 @@ function Orders(props) {
             else if(data.length===0){
               setStatus(2)
             }
-              console.log("data = ",data);
+            console.log("data = ",data);
              
           }
           )
@@ -242,6 +242,7 @@ function ItemCards(props){
       {
 
       }
+     
     </div>
   )
 }

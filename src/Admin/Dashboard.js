@@ -29,7 +29,7 @@ import AdminProfile from './AdminProfile';
 import AddAdmins from '../components/AddAdmins';
 import Users from '../components/Users';
 import Loader from '../components/Loader';
-import AdminPanel from '../components/AdminPanel';
+import {AdminPanel,SuperAdminPanel} from '../components/AdminPanel';
   
 const { Header, Content, Footer, Sider } = Layout;
 function getItem(label, key, icon, children) {
@@ -117,68 +117,16 @@ if(UserData){
     <> 
     
      {UserData.Role==="Admin"?
-<div className="d-md-block d-none"> 
+<div className=" "> 
      <Layout
       style={{
         minHeight: '100vh',
       }}
        
     >
-      <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
-          <div className="logo" />
-          <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
-         
-          <Menu.Item   onClick={()=>setscreen("DashBoard")}   >
-               
-            </Menu.Item>
-            <Menu.Item   onClick={()=>setscreen("DashBoard")}   >
-               
-               </Menu.Item>
-            <Menu.Item key="1" onClick={()=>setscreen("DashBoard")} icon={ <PieChartOutlined />}>
-                DashBoard
-            </Menu.Item>
-
-            <Menu.Item key="2" onClick={()=>setscreen("Profile")} icon={ <UserOutlined />}>
-                    Profile
-            </Menu.Item>
-
-            <Menu.Item key="5" onClick={()=>setscreen("MyItems")} icon={ <TableOutlined />}>
-                     My Items
-            </Menu.Item>
-
-            <Menu.Item key="3" onClick={()=>setscreen("Add Items")} icon={<AppstoreAddOutlined />}>
-                    Add Items
-            </Menu.Item>
- 
-            <SubMenu key="sub2" icon={<FileTextOutlined />} title="Orders" onClick={()=>setscreen("Orders")} icon={<ShoppingCartOutlined />}>
-           
-          
-            <Menu.Item key="4" onClick={()=>setOrdertype("Pending")}  >
-            Pending
-            </Menu.Item>
-            
-            <Menu.Item key="6" onClick={()=>setOrdertype("Delivered")}  >
-            Delivered
-            </Menu.Item>
-            <Menu.Item key="7" onClick={()=>setOrdertype("Accepted")}  >
-            Accepted
-            </Menu.Item>
-            <Menu.Item key="8" onClick={()=>setOrdertype("Declain")} >
-            Declined
-            </Menu.Item>
-
-           </SubMenu>
-           
-          </Menu>
-
-        </Sider>
+         <AdminPanel changer={Changer} chan={Chan}/>
       <Layout className="site-layout">
-        <Header
-          className="site-layout-background"
-          style={{
-            padding: 0,
-          }}
-        />
+        
         <Content
           style={{
             margin: '0 16px',
@@ -209,7 +157,7 @@ if(UserData){
       }}
     >
     
-       <AdminPanel changer={Changer} chan={Chan}/>
+       <SuperAdminPanel changer={Changer} chan={Chan}/>
       <Layout className="site-layout">
         
         <Content

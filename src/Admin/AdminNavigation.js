@@ -28,6 +28,7 @@ function AdminNavigation() {
           <Route path="/Dashboard" element={<Dashboard />} />
           <Route path="/OrderDetails" element={<OrderDetails />} />
     </Routes>
+  
   </BrowserRouter>
   );
 }

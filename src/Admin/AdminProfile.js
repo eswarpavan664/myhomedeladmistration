@@ -32,6 +32,7 @@ function AdminProfile(props) {
       <div className='  col-12 text-center'>
 
       <button onClick={logout} className="btn btn-outline-danger"> Logout</button>
+      <p className="mt-5"> © Copyright 2023 Trigovex Technologies Pvt. Ltd. All Rights Reserved</p>
       </div>
     </div>
     </div>
