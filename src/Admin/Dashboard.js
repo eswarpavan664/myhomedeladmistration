@@ -57,7 +57,7 @@ const items = [
   
 function Dashboard(){
   const [collapsed, setCollapsed] = useState(false);
-  const [screen,setscreen] = useState("DashBoard");
+  const [screen,setscreen] = useState("Orders");
 
 
   let navigate = useNavigate();

@@ -1,32 +1,16 @@
 import React,{useState,useEffect} from 'react'
 import { Ip } from './../constants/Ip';
 import Loader from './Loader';
-
+import lode from '../lotties/117472-no-orders-by-hussain.json';
 function Orders(props) {
   const [Items,setItems] = useState([]);
+  const [DisplayType,setDisplayType] =useState(props.Ordertype)
   console.log(props.userdata.Role)
     const GetItems=()=>{
 
       if(props.userdata.Role==="SuperAdmin")
       {
-        fetch(Ip+'/GetOrdersForSuperAdmin',{
-          headers:new Headers({
-            Authorization:"Bearer " 
-          })
-          }).then(res=>res.json())
-          .then(data=>{ 
-          
-           
-            setItems(data);
-            
-                console.log(data);
-             
-          }
-          )
-          
-      }
-      else{
-        fetch(Ip+'/GetOrders?id='+props.id,{
+        fetch(Ip+'/GetOrdersForSuperAdmin?id='+props.Ordertype,{
           headers:new Headers({
             Authorization:"Bearer " 
           })
@@ -41,7 +25,29 @@ function Orders(props) {
             else if(data.length===0){
               setStatus(2)
             }
-                console.log(data);
+            console.log("data = ",data);
+             
+          }
+          )
+          
+      }
+      else{
+        fetch(Ip+'/GetOrders?id='+props.id+"&type="+props.Ordertype,{
+          headers:new Headers({
+            Authorization:"Bearer " 
+          })
+          }).then(res=>res.json())
+          .then(data=>{ 
+          
+           
+            setItems(data);
+            if(data.length>0){
+              setStatus(1)
+            }
+            else if(data.length===0){
+              setStatus(2)
+            }
+              console.log("data = ",data);
              
           }
           )
@@ -50,17 +56,19 @@ function Orders(props) {
     }
 
     const [Status,setStatus] =useState(0);
+
     useEffect(()=>{
-      setInterval(() => {
+     
         GetItems();
-          }, 2000)
-    },[ ])
-    const [DisplayType,setDisplayType] =useState(props.Ordertype)
-    console.log(props.Ordertype)
+        
+    },[props.Ordertype])
+ 
+   
   return (
      <>
+
        {Status===2?
-          <h1>No Orders</h1>:null
+          <h1>No Orders {props.Ordertype}/Or Orders in Progress</h1>:null
        }
       {Items?  
       <div className='container mt-5'> 
@@ -89,13 +97,17 @@ function Orders(props) {
        
       }
 
-      {Items.length===0? <Loader/>: 
+      {Status===0? <Loader/>: 
             null
       }
      
      </>
   )
 }
+
+
+
+
 
 function ItemCards(props){
 
@@ -123,12 +135,14 @@ function ItemCards(props){
   const [statusupdate,setstatusupdate]=useState("");
  var items=props.orderList[0].split("*")
  items = items.filter(e=>e!=="")
- console.log(items)
-
+ 
   return(
     <div>
 
-      {props.OrderStatus===props.displaytype ? 
+
+   
+
+      {props.OrderStatus===props.displaytype? 
       
       <>
 
@@ -222,6 +236,10 @@ function ItemCards(props){
       </>
       
       :null
+
+      }
+
+      {
 
       }
     </div>

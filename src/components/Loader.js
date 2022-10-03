@@ -12,7 +12,7 @@ function Loader() {
     let navigate = useNavigate();
     useEffect(() => {
         const timer = setTimeout(() => {
-            alert("May a network or server issus please refresh the page...")
+            
         }, 9000);
         return () => clearTimeout(timer);
       }, []);
