@@ -135,13 +135,7 @@ if(UserData){
           
           <ConTent page={screen} data={UserData} Ordertype={Ordertype}/>
         </Content>
-        <Footer
-          style={{
-            textAlign: 'center',
-          }}
-        >
-          © Copyright 2023 Trigovex Technologies Pvt. Ltd. All Rights Reserved
-        </Footer>
+         
       </Layout>
     </Layout>
     </div>
@@ -238,7 +232,7 @@ function ConTent(props)
     ],
   }}
 />*/
-<h1>Dashboard</h1>
+<h1>Dashboard  </h1>
     )
   }
   if(props.page==="Profile")

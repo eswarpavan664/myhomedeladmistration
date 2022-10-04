@@ -1,8 +1,15 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
 import Orders from './Orders';
+import { useNavigate } from 'react-router-dom';
 
 function SuperAdminPanel(props) {
+  let navigate = useNavigate();
+  const  logout =()=>{
+    localStorage.removeItem("token") 
+     navigate('/Login')
+   
+ }
   return (
     <div className='container'>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -43,6 +50,11 @@ function SuperAdminPanel(props) {
             <li><a class="dropdown-item" onClick={()=>props.chan("Delivered")} >Delivered</a></li>
           </ul>
         </li>
+
+        
+        <li class="nav-item" style={{backgroundColor:'green',width:70,borderRadius:10,textAlign:'center'}}>
+          <a class="nav-link active"  style={{color:'white'}} onClick={logout}>Logout</a>
+        </li>
       </ul>
       
     </div>
@@ -54,6 +66,12 @@ function SuperAdminPanel(props) {
 
 
 function AdminPanel(props) {
+  let navigate = useNavigate();
+  const  logout =()=>{
+    localStorage.removeItem("token") 
+     navigate('/Login')
+   
+ }
   return (
     <div className='container'>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -87,6 +105,11 @@ function AdminPanel(props) {
             <li><a class="dropdown-item" onClick={()=>props.chan("Declain")} >Declined</a></li>
             <li><a class="dropdown-item" onClick={()=>props.chan("Delivered")} >Delivered</a></li>
           </ul>
+        </li>
+
+
+        <li class="nav-item" style={{backgroundColor:'green',width:70,borderRadius:10,textAlign:'center'}}>
+          <a class="nav-link active"  style={{color:'white'}} onClick={logout}>Logout</a>
         </li>
       </ul>
       
