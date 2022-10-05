@@ -6,11 +6,16 @@ function Orders(props) {
   const [Items,setItems] = useState([]);
   const [DisplayType,setDisplayType] =useState(props.Ordertype)
   console.log(props.userdata.Role)
+
+
+  const [OrderId,setOrderId] =useState("All");
+
+
     const GetItems=()=>{
 
       if(props.userdata.Role==="SuperAdmin")
       {
-        fetch(Ip+'/GetOrdersForSuperAdmin?id='+props.Ordertype,{
+        fetch(Ip+'/FindOrderForSuperAdminByOrderId?id='+props.Ordertype+"&orderid="+OrderId,{
           headers:new Headers({
             Authorization:"Bearer " 
           })
@@ -32,7 +37,7 @@ function Orders(props) {
           
       }
       else{
-        fetch(Ip+'/GetOrders?id='+props.id+"&Type="+props.Ordertype,{
+        fetch(Ip+'/FindOrderForAdminByOrderId?id='+props.Ordertype+"&orderid="+OrderId+"&Adminid="+props.id,{
           headers:new Headers({
             Authorization:"Bearer " 
           })
@@ -61,18 +66,27 @@ function Orders(props) {
      
         GetItems();
         
-    },[props.Ordertype])
+    },[props.Ordertype,OrderId])
  
    
   return (
      <>
-
+          <div class="input-group mb-3 col-12 text-center mt-3 d-flex justify-content-center" >
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">OrderId</span>
+                  </div>
+                 <div>
+                 <input type="text" value={OrderId} onChange={(e)=>setOrderId(e.target.value)}   class="form-control col-6" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" />
+                 </div>
+            </div>
        {Status===2?
-          <h1>No Orders {props.Ordertype}/Or Orders in Progress</h1>:null
+          <h1>No Orders {props.Ordertype}/Or Orders in Progress Or Invalid Order Id</h1>:null
        }
       {Items?  
       <div className='container mt-5'> 
+            
       {Items.map((item)=>(
+        
           
           <ItemCards 
             CustomerName={item.CustomerName}
