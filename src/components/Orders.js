@@ -67,6 +67,15 @@ function Orders(props) {
         GetItems();
         
     },[props.Ordertype,OrderId])
+
+
+
+   useState(()=>{
+    setInterval(() => {
+    
+      GetItems();
+        }, 1000)
+   }) 
  
    
   return (
