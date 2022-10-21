@@ -34,7 +34,8 @@ const [DeliveryTime,setDeliveryTime] =useState("");
           "ShopPhoto":"",
           "ShopType":ShopType,
           "Deliverycharges":DeliveryCharges,
-          "DeliveryTime":DeliveryTime
+          "DeliveryTime":DeliveryTime,
+          "ShopStatus":"true"
          })
         })
         .then(res=>{

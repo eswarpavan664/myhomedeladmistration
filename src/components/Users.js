@@ -49,7 +49,7 @@ const [Data,setData] =useState([]);
     {props.page==="Admins"?
 <>
     {Data.map((data)=>(
-      <AdimCard Name={data.Name} email={data.email} Address={data.Address} PhoneNumber={data.PhoneNumber} _id={data._id}/>
+      <AdimCard Name={data.Name} email={data.email} Address={data.Address} PhoneNumber={data.PhoneNumber} _id={data._id} ShopStatus={data.ShopStatus}/>
     
       ))
     
@@ -126,6 +126,36 @@ function AdimCard(props){
       }
       )
 }
+
+const [se,setse]=useState(props.ShopStatus==="true"?true:false)
+
+const UpdateShopTimes=(k)=>{
+  setse(!se)
+  fetch(Ip+"/OpenOrCloseShop",{
+    method:"PUT",
+    headers: {
+     'Content-Type': 'application/json'
+   },
+   body:JSON.stringify({
+    "Id":props._id,
+    "status":k
+ 
+   })
+  })
+  .then(res=> {
+
+      if(k==="true"){
+        alert("shop open")
+      }else{
+        alert("shop close")
+      }
+
+  })
+ 
+ 
+}
+console.log()
+
   return(
     <div className='col-md-3'>
     <div class="card text-white bg-warning mb-3" style={{}} >
@@ -134,11 +164,21 @@ function AdimCard(props){
       <div class="card-body">
         <h5 class="card-title">{props.PhoneNumber}</h5>
           {props.email?<h6 class="card-title">{props.email}</h6>:<h6>no email id</h6>}
-          {props.Address?<p class="card-text">{props.Address.split("_")[0]}</p>:null
+          {props.Address?<p class="card-text">{props.Address.split("_")[0]}</p>:null}
 
-          }
+          {props.ShopStatus==="true"?<p class="card-text">shop Open</p>:<p class="card-text">shop Close</p>}
+
       </div>
-      <button className='text-danger' style={{borderRadius:10,backgroundColor:'gray',color:'white'}} onClick={DeleteAdmin}> <h6 style={{color:'white',fontSize:20}}>Delete</h6></button>
+      <button className='text-danger' style={{borderRadius:10,backgroundColor:'gray',color:'white',marginBottom:'5%'}} onClick={DeleteAdmin}> <h6 style={{color:'white',fontSize:20}}>Delete</h6></button>
+      {se?
+        <button className='text-primary' style={{borderRadius:10,backgroundColor:'gray',color:'white'}} onClick={()=>UpdateShopTimes("false")}> <h6 style={{color:'white',fontSize:20}}>Open</h6></button>
+   
+          :
+       <button className='text-primary' style={{borderRadius:10,backgroundColor:'gray',color:'white'}} onClick={()=>UpdateShopTimes("true")}> <h6 style={{color:'white',fontSize:20}}>Close</h6></button>
+   
+
+      }
+   
     </div>
    
   </div>

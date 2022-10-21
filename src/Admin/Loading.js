@@ -9,13 +9,13 @@ import Lodi from '../images/95530-password.json'
 
 function Loading() {
 
-    let navigate = useNavigate();
-    useEffect(() => {
-        const timer = setTimeout(() => {
-          navigate('Login');
-        }, 9000);
-        return () => clearTimeout(timer);
-      }, []);
+  let navigate = useNavigate();
+  useEffect(() => {
+      const timer = setTimeout(() => {
+        navigate('Login');
+      }, 9000);
+      return () => clearTimeout(timer);
+    }, []);
 
   return (
     <>
