@@ -97,7 +97,8 @@ function DemoTest2(props) {
       "AdminId":props.id+props.ShopName,
       "ItemType":Type,
       "ItemCategory":VegOrNon,
-      "DiscountPrice":DisPrice
+      "DiscountPrice":DisPrice,
+      "ItemStatus":"true"
 
      })
     })
