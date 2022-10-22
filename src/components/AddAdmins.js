@@ -13,7 +13,7 @@ function AddAdmins(props) {
 
 const [DeliveryCharges,setDeliveryCharges] =useState("");
 const [DeliveryTime,setDeliveryTime] =useState("");
-
+const[MainItems,setMainItems]=useState("");
     const AddAdmin=()=>{
 
         if(DeliveryCharges!=="" &&Name!=="" &&email!=="" &&Password!=="" &&Phonenumber!=="" &&shopName!=="" &&Address!=="" &&DeliveryTime!=="")
@@ -35,6 +35,7 @@ const [DeliveryTime,setDeliveryTime] =useState("");
           "ShopType":ShopType,
           "Deliverycharges":DeliveryCharges,
           "DeliveryTime":DeliveryTime,
+          "MainItems":MainItems,
           "ShopStatus":"true"
          })
         })
@@ -49,6 +50,7 @@ const [DeliveryTime,setDeliveryTime] =useState("");
           setShopName("");
           setDeliveryCharges("");
           setDeliveryTime("");
+          setMainItems("");
         })
 else{
   alert("All Fields  are Required...")
@@ -77,48 +79,60 @@ else{
                    {ShopType}
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" href="#" onClick={()=>setShopType("Grocery")}>Grocery</a>
-                  <a class="dropdown-item" href="#" onClick={()=>setShopType("Restaurant")}>Restaurant</a>
-                  <a class="dropdown-item" href="#" onClick={()=>setShopType("Vegetable Shop")}>Vegetable Shop</a>
-                  <a class="dropdown-item" href="#" onClick={()=>setShopType("Meet Shop")}>Meet Shop</a>
+                  <a class="dropdown-item"  onClick={()=>setShopType("Grocery")}>Grocery</a>
+                  <a class="dropdown-item"  onClick={()=>setShopType("Restaurant")}>Restaurant</a>
+                  <a class="dropdown-item"  onClick={()=>setShopType("Vegetable Shop")}>Vegetable Shop</a>
+                  <a class="dropdown-item"  onClick={()=>setShopType("Meet Shop")}>Meet Shop</a>
+
+                  <a class="dropdown-item"  onClick={()=>setShopType("Coffee Shop")}>Coffee Shop</a>
+                  <a class="dropdown-item"  onClick={()=>setShopType("Kirana Stores")}>Kirana Stores</a>
+                  <a class="dropdown-item"  onClick={()=>setShopType("Fancy Stores")}>Fancy Stores</a>
+                  <a class="dropdown-item"  onClick={()=>setShopType("Bakery")}>Bakery</a>
                    
-                  <a class="dropdown-item" href="#" onClick={()=>setShopType("Fresh")}>Fresh</a>
-             
+                  <a class="dropdown-item"  onClick={()=>setShopType("Tiffin Center")}>Tiffin Center</a>
+                  <a class="dropdown-item"  onClick={()=>setShopType("General Stores")}>General Stores</a>
+                  <a class="dropdown-item"  onClick={()=>setShopType("Dairy Stores")}>Dairy Stores</a>
                 </div>
                       
           </div>
               <div class="mb-3">
                 <label class="form-label">Admin Name</label>
-                <input class="form-control" type="text" value={Name} placeholder="enter Item Name" onChange={(e)=>setName(e.target.value)} id="formFile" />
+                <input class="form-control" type="text" value={Name} placeholder="Enter Item Name" onChange={(e)=>setName(e.target.value)} id="formFile" />
               </div>
           
               <div class="mb-3">
                 <label for="formFileDisabled" class="form-label">Enter email</label>
-                <input class="form-control" type="text" value={email} placeholder="enter email" onChange={(e)=>setemail(e.target.value)} id="formFileDisabled" required />
+                <input class="form-control" type="text" value={email} placeholder="Enter email" onChange={(e)=>setemail(e.target.value)} id="formFileDisabled" required />
               </div>
               <div class="mb-3">
                 <label for="exampleFormControlTextarea1" class="form-label">Password</label>
-                <input class="form-control" type="text" value={Password} placeholder="enter Password" onChange={(e)=>setPassword(e.target.value)} id="formFileDisabled" required />
+                <input class="form-control" type="text" value={Password} placeholder="Enter Password" onChange={(e)=>setPassword(e.target.value)} id="formFileDisabled" required />
               </div>
               <div class="mb-3">
                 <label for="formFileMultiple" class="form-label">Phone Number</label>
-                <input class="form-control" type="text" value={Phonenumber} placeholder="enter Phone Number" onChange={(e)=>setPhoneNumber(e.target.value)} id="formFileDisabled" required />
+                <input class="form-control" type="text" value={Phonenumber} placeholder="Enter Phone Number" onChange={(e)=>setPhoneNumber(e.target.value)} id="formFileDisabled" required />
               </div>
+
               <div class="mb-3">
-                <label for="formFileMultiple" class="form-label">shop Name</label>
-                <input class="form-control" type="text" value={shopName} placeholder="enter shop Name" onChange={(e)=>setShopName(e.target.value)} id="formFileDisabled" required />
+                <label for="formFileMultiple" class="form-label">Main Available Items</label>
+                <input class="form-control" type="text" value={MainItems} placeholder="Main Available Items" onChange={(e)=>setMainItems(e.target.value)} id="formFileDisabled" required />
+              </div>
+
+              <div class="mb-3">
+                <label for="formFileMultiple" class="form-label">Shop Name</label>
+                <input class="form-control" type="text" value={shopName} placeholder="Enter shop Name" onChange={(e)=>setShopName(e.target.value)} id="formFileDisabled" required />
               </div>
               <div class="mb-3">
                 <label for="formFileMultiple" class="form-label">City Name</label>
-                <input class="form-control" type="text" value={Address} placeholder="enter City Name" onChange={(e)=>setAddress(e.target.value)} id="formFileDisabled" required />
+                <input class="form-control" type="text" value={Address} placeholder="Enter City Name" onChange={(e)=>setAddress(e.target.value)} id="formFileDisabled" required />
               </div>
               <div class="mb-3">
                 <label for="formFileMultiple" class="form-label">Delivery Charges</label>
-                <input class="form-control" type="text" value={DeliveryCharges} placeholder="enter City Name" onChange={(e)=>setDeliveryCharges(e.target.value)} id="formFileDisabled" required />
+                <input class="form-control" type="text" value={DeliveryCharges} placeholder="Enter City Name" onChange={(e)=>setDeliveryCharges(e.target.value)} id="formFileDisabled" required />
               </div>
               <div class="mb-3">
                 <label for="formFileMultiple" class="form-label">Delivery Time</label>
-                <input class="form-control" type="text" value={DeliveryTime} placeholder="enter City Name" onChange={(e)=>setDeliveryTime(e.target.value)} id="formFileDisabled" required />
+                <input class="form-control" type="text" value={DeliveryTime} placeholder="Enter City Name" onChange={(e)=>setDeliveryTime(e.target.value)} id="formFileDisabled" required />
               </div>
               <div class="text-center">
 
