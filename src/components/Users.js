@@ -158,27 +158,29 @@ console.log()
 
   return(
     <div className='col-md-3'>
-    <div class="card text-white bg-warning mb-3" style={{}} >
-      <h3 class="card-header">{props.Name}</h3>
+    <div class="card text-dark mb-3 pb-3" style={{}} >
+      <h3 class="card-header ">{props.Name}</h3>
       
       <div class="card-body">
         <h5 class="card-title">{props.PhoneNumber}</h5>
           {props.email?<h6 class="card-title">{props.email}</h6>:<h6>no email id</h6>}
           {props.Address?<p class="card-text">{props.Address.split("_")[0]}</p>:null}
 
-          {props.ShopStatus==="true"?<p class="card-text">shop Open</p>:<p class="card-text">shop Close</p>}
+          {props.ShopStatus==="true"?<p cla ss="card-text">shop Open</p>:<p class="card-text">shop Close</p>}
 
       </div>
-      <button className='text-danger' style={{borderRadius:10,backgroundColor:'gray',color:'white',marginBottom:'5%'}} onClick={DeleteAdmin}> <h6 style={{color:'white',fontSize:20}}>Delete</h6></button>
+      <div className='row'>
+        <button className='btn btn-outline-danger col-4 offset-1' onClick={DeleteAdmin}>Delete</button>
+      
       {se?
-        <button className='text-primary' style={{borderRadius:10,backgroundColor:'gray',color:'white'}} onClick={()=>UpdateShopTimes("false")}> <h6 style={{color:'white',fontSize:20}}>Open</h6></button>
+        <button className='btn btn-outline-danger col-4 offset-1' onClick={()=>UpdateShopTimes("false")}>Open</button>
    
           :
-       <button className='text-primary' style={{borderRadius:10,backgroundColor:'gray',color:'white'}} onClick={()=>UpdateShopTimes("true")}> <h6 style={{color:'white',fontSize:20}}>Close</h6></button>
+       <button className='btn btn-outline-danger col-4 offset-1' onClick={()=>UpdateShopTimes("true")}>Close</button>
    
 
       }
-   
+      </div>
     </div>
    
   </div>

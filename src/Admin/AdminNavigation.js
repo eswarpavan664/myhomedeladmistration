@@ -23,7 +23,7 @@ function AdminNavigation() {
 
  
           
-          <Route path="/" element={<Loading />} />
+          <Route path="/hh" element={<Loading />} />
           <Route path="/Login" element={<AdminLogin />} />
           <Route path="/Dashboard" element={<Dashboard />} />
           <Route path="/OrderDetails" element={<OrderDetails />} />

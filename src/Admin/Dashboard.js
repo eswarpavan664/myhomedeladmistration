@@ -186,7 +186,7 @@ if(UserData){
 
 }
 else{
-  return(  <Loader/>)
+  return(  <h1>d</h1>)
  
 }
   
