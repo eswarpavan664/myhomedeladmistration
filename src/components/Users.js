@@ -1,6 +1,8 @@
 import React,{useState,useEffect} from 'react'
 import { Ip } from './../constants/Ip';
-
+import { Player, Controls } from '@lottiefiles/react-lottie-player';
+import openload from '../lotties/83987-active.json'
+import closeloade from '../lotties/51661-closed-tag.json' 
 function Users(props) {
 
 const [Data,setData] =useState([]);
@@ -34,6 +36,7 @@ const [Data,setData] =useState([]);
       }
       )
   }
+  const [Temp,setTemp]=useState("");
   useEffect(()=>{
      if(props.page==="Admins"){
       GetItems()
@@ -41,7 +44,7 @@ const [Data,setData] =useState([]);
      else{
       GetUSers()
      }
-  },[props.page])
+  },[props.page,Temp])
   return (
     <div className='row mt-5'>
     
@@ -49,7 +52,7 @@ const [Data,setData] =useState([]);
     {props.page==="Admins"?
 <>
     {Data.map((data)=>(
-      <AdimCard Name={data.Name} email={data.email} Address={data.Address} PhoneNumber={data.PhoneNumber} _id={data._id} ShopStatus={data.ShopStatus}/>
+      <AdimCard setTemp={setTemp} Name={data.Name} email={data.email} Address={data.Address} PhoneNumber={data.PhoneNumber} _id={data._id} ShopStatus={data.ShopStatus}/>
     
       ))
     
@@ -119,7 +122,7 @@ function AdimCard(props){
       }).then(res=>res.json())
       .then(data=>{ 
       
-       
+        props.setTemp("Deleted")
         alert("deleted Successfully");
         
      
@@ -145,13 +148,16 @@ const UpdateShopTimes=(k)=>{
   .then(res=> {
 
       if(k==="true"){
+        props.setTemp("Done")
         alert("shop open")
       }else{
+        
+        props.setTemp("Done Agin")
         alert("shop close")
       }
 
   })
- 
+  props.setTemp("Done Agin Agin")
  
 }
 console.log()
@@ -166,17 +172,45 @@ console.log()
           {props.email?<h6 class="card-title">{props.email}</h6>:<h6>no email id</h6>}
           {props.Address?<p class="card-text">{props.Address.split("_")[0]}</p>:null}
 
-          {props.ShopStatus==="true"?<p cla ss="card-text">shop Open</p>:<p class="card-text">shop Close</p>}
+          {props.ShopStatus==="true"?<>
+
+          <div  className='row col-md-12'>
+            
+          <p class="card-text col-md-6 text-center" style={{fontSize:25}}>shop Open </p>
+                    <Player
+                              autoplay
+                              loop
+                              src={openload}
+                              className='col-md-6'
+                              style={{ height: '150px', width: '150px' }}
+                          >
+                            
+                          </Player>
+          </div>
+          </>: <>
+           <div className='row col-12'>
+           <p class="card-text col-6 text-center" style={{fontSize:25}} >shop Close </p>
+               <Player
+                              autoplay
+                              loop
+                              src={closeloade}
+                              className='col-6'
+                              style={{ height: '150px', width: '150px' }}
+                          >
+                            
+                          </Player>
+           </div>
+          </>}
 
       </div>
       <div className='row'>
         <button className='btn btn-outline-danger col-4 offset-1' onClick={DeleteAdmin}>Delete</button>
       
-      {se?
-        <button className='btn btn-outline-danger col-4 offset-1' onClick={()=>UpdateShopTimes("false")}>Open</button>
+      {props.ShopStatus==="true"?
+        <button className='btn btn-outline-danger col-4 offset-1' onClick={()=>UpdateShopTimes("false")}>Close</button>
    
           :
-       <button className='btn btn-outline-danger col-4 offset-1' onClick={()=>UpdateShopTimes("true")}>Close</button>
+       <button className='btn btn-outline-danger col-4 offset-1' onClick={()=>UpdateShopTimes("true")}>Open</button>
    
 
       }

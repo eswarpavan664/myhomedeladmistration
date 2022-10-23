@@ -98,7 +98,8 @@ function DemoTest2(props) {
       "ItemType":Type,
       "ItemCategory":VegOrNon,
       "DiscountPrice":DisPrice,
-      "ItemStatus":"true"
+      "ItemStatus":"true",
+      "ItemHalfPrice":HalfPrice
 
      })
     })
@@ -137,6 +138,7 @@ function DemoTest2(props) {
       setType("Item Type");
       setVegOrNon("Select Veg/Nonveg")
       setDisPrice("");
+      setHalfPrice("");
       alert("Item Added...")
       }
       else{
@@ -150,7 +152,7 @@ function DemoTest2(props) {
   const [Discription,setDisccription] =useState("");
   const [VegOrNon,setVegOrNon] = useState("Select Veg/Nonveg");
   const [Type,setType] =useState("Item Type")
-
+  const [HalfPrice,setHalfPrice] =useState("");
   return (
     <div className="container">
      <Helmet>
@@ -225,6 +227,12 @@ function DemoTest2(props) {
               <div class="mb-3">
                 <label for="formFileDisabled" class="form-label">Enter Discount Price</label>
                 <input class="form-control" type="text" value={DisPrice} placeholder="Discount Price" onChange={(e)=>setDisPrice(e.target.value)} id="formFileDisabled" required />
+              </div>
+
+
+              <div class="mb-3">
+                <label for="formFileDisabled" class="form-label">If Item has Half Quantity Enter Price</label>
+                <input class="form-control" type="text" value={HalfPrice} placeholder="Half Quantity Price" onChange={(e)=>setHalfPrice(e.target.value)} id="formFileDisabled"  />
               </div>
               
               <div class="mb-3">

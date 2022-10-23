@@ -25,9 +25,10 @@ function MyItems(props) {
         }
         )
     }
+    const [Temp,setTemp]=useState("");
     useEffect(()=>{
       GetItems();
-    })
+    },[])
     console.log("sdkasn= ",Items)
   return (
     <>
@@ -93,9 +94,21 @@ function ItemCards(props){
             </div>
             <div class="row d-flex justify-content-between">
               
-                  <button class="btn btn-danger col-5" onClick={DeleteItem}>Delete</button>
+                  <button class="btn btn-danger col-4" onClick={DeleteItem}>Delete</button>
               
-                  <button class="btn btn-info col-5" onClick={UpdateItem}>Edit</button>
+                  <button class="btn btn-info col-4" onClick={UpdateItem}>Edit</button>
+                   {props.ItemStatus==="true"?
+
+                   <>
+                   <button class="btn btn-info col-4" onClick={UpdateItem}>Disable</button>
+                   </>
+                   :
+                   <>
+
+                   <button class="btn btn-info col-4" onClick={UpdateItem}>Enable</button>
+                   </>
+
+                   }
               
             </div>
           </div>
