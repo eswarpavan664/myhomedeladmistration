@@ -28,7 +28,7 @@ function MyItems(props) {
     const [Temp,setTemp]=useState("");
     useEffect(()=>{
       GetItems();
-    },[])
+    },[Temp])
     console.log("sdkasn= ",Items)
   return (
     <>
@@ -43,8 +43,8 @@ function MyItems(props) {
                ItemPrice={item.ItemPrice}
                ItemDiscription={item.ItemDiscription}
                _id={item._id}
-
-
+              ItemStatus={item.ItemStatus}
+               setTemp={setTemp}
                 /> 
           ))
 
@@ -80,12 +80,45 @@ function ItemCards(props){
             }
             )
     }
-    const UpdateItem=()=>{
+  
+  
 
+
+    const UpdateItemStatus=(k)=>{
+       
+      fetch(Ip+"/UpdateItemStatus",{
+        method:"PUT",
+        headers: {
+         'Content-Type': 'application/json'
+       },
+       body:JSON.stringify({
+        "Id":props._id,
+        "status":k
+     
+       })
+      })
+      .then(res=> {
+    
+          if(k==="true"){
+            props.setTemp("Done")
+            alert("Item Available")
+          }else{
+            
+            props.setTemp("Done Agin")
+            alert("Item not Available")
+          }
+    
+      })
+      props.setTemp("Done Agin Agin")
+     
     }
+
+const updateItemDetails=()=>{
+
+}
     return(
       <div class="col-md-3">
-      <div class="card p-2 cd m-0" style={{width: '18rem',border: '2px solid hotpink'}}>
+      <div class="card p-2 cd ml-3" style={{width: '25rem',border: '2px solid hotpink'}}>
           <img class="card-img-top" src={ur} alt="Card image cap" />
           <div class="card-body">
             <div class="row">
@@ -94,18 +127,18 @@ function ItemCards(props){
             </div>
             <div class="row d-flex justify-content-between">
               
-                  <button class="btn btn-danger col-4" onClick={DeleteItem}>Delete</button>
+                  <button class="btn btn-danger col-3" onClick={DeleteItem}>Delete</button>
               
-                  <button class="btn btn-info col-4" onClick={UpdateItem}>Edit</button>
+                  <button class="btn btn-info col-4" onClick={updateItemDetails}>Edit</button>
                    {props.ItemStatus==="true"?
 
                    <>
-                   <button class="btn btn-info col-4" onClick={UpdateItem}>Disable</button>
+                   <button class="btn btn-info col-4" onClick={()=>UpdateItemStatus("false")}>Disable</button>
                    </>
                    :
                    <>
 
-                   <button class="btn btn-info col-4" onClick={UpdateItem}>Enable</button>
+                   <button class="btn btn-info col-4" onClick={()=>UpdateItemStatus("true")}>Enable</button>
                    </>
 
                    }

@@ -95,8 +95,8 @@ function DemoTest2(props) {
       "ShopId":props.id,
       "ItemId":props.id+ItemName,
       "AdminId":props.id+props.ShopName,
-      "ItemType":Type,
-      "ItemCategory":VegOrNon,
+      "ItemType":"Rice",
+      "ItemCategory":"Non Veg",
       "DiscountPrice":DisPrice,
       "ItemStatus":"true",
       "ItemHalfPrice":HalfPrice
@@ -150,16 +150,15 @@ function DemoTest2(props) {
   const [Price,setPrice] =useState("");
   const [DisPrice,setDisPrice] =useState("");
   const [Discription,setDisccription] =useState("");
-  const [VegOrNon,setVegOrNon] = useState("Select Veg/Nonveg");
-  const [Type,setType] =useState("Item Type")
+  const [VegOrNon,setVegOrNon] = useState("Non Veg");
+  const [Type,setType] =useState("Rice")
   const [HalfPrice,setHalfPrice] =useState("");
   return (
     <div className="container">
      <Helmet>
                   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
-           
-                  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>            
-   </Helmet>
+                  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>   </Helmet>
     
       {/*<form onSubmit={onSubmitHandler}>
         <input type="file" onChange={fileChangeHandler} />
