@@ -71,10 +71,10 @@ function Orders(props) {
 
 
    useState(()=>{
-    setInterval(() => {
+  
     
       GetItems();
-        }, 1000)
+ 
    }) 
  
    
