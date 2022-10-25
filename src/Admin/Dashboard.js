@@ -19,7 +19,7 @@ import {
   FileTextOutlined,
 } from '@ant-design/icons';
 
-import {CChart } from '@coreui/react-chartjs';
+ 
 import { Breadcrumb, Layout, Menu } from 'antd';
 import AddItems from '../components/AddItems';  
 import {Orders} from '../components/Orders';
@@ -30,6 +30,7 @@ import AddAdmins from '../components/AddAdmins';
 import Users from '../components/Users';
 import Loader from '../components/Loader';
 import {AdminPanel,SuperAdminPanel} from '../components/AdminPanel';
+import MainDashBoardScreen from './MainDashBoardScreen';
   
 const { Header, Content, Footer, Sider } = Layout;
 function getItem(label, key, icon, children) {
@@ -72,6 +73,7 @@ function Dashboard(){
   const  GetData = async ()=>{
      const token = await  localStorage.getItem("token")
      console.log("Dashboard = "+token)
+     
    fetch(Ip+'/GetAdmin',{
    headers:new Headers({
      Authorization:"Bearer "+token,
@@ -232,7 +234,7 @@ function ConTent(props)
     ],
   }}
 />*/
-<h1>Dashboard  </h1>
+ <MainDashBoardScreen Data={props.data} id={props.data.AdminId} userdata={props.data}/>
     )
   }
   if(props.page==="Profile")

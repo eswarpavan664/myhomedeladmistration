@@ -17,8 +17,38 @@ function AdminProfile(props) {
    
  }
 
+ const [charges,setcharges] =useState([]);
+ const [se,setter]=useState(false);
+ const GetCharges=()=>{
+//GetAreaCharges
+
  
+fetch(Ip+'/GetAllCharges',{
+  headers:new Headers({
+    Authorization:"Bearer " 
+  })
+  }).then(res=>res.json())
+  .then(data=>{ 
+  
+   
+   
+    console.log("data = ",data);
+    if(data.Status==="No"){
+      setter(false)
+    }
+    else{
+      setter(true)
+      setcharges(data);
+    }
+     
+  }
+  )
+ }
  
+
+ useEffect(()=>{
+  GetCharges();
+ })
 
 const [Temp,setTemp] =useState(false);
   return (
@@ -31,22 +61,32 @@ const [Temp,setTemp] =useState(false);
         
       </div>
       <div  style={{borderBottom:"2px solid green",marginTop:'2%'}}></div>
-      <div>
-      <div className='col-6'>
-        <h3 className='m-0'>{props.Data.Name}</h3>
-      <h3 className='m-0'>{props.Data.email}</h3>
-      <h3 className='m-0'>{props.Data.PhoneNumber}</h3>
-      <h3 className='m-0'>{props.Data.ShopName}</h3>
-      <h3 className='m-0'>{props.Data.Address}</h3>
-        </div>
-      </div>
-      <button style={{backgroundColor:'green'}} onClick={()=>setTemp(!Temp)}><p style={{color:'white'}}>Update Details</p></button>
+      <div className='container row col-md-12'>
+          <div className='col-md-6'>
+                <h3 className='m-0'>{props.Data.Name}</h3>
+              <h3 className='m-0'>{props.Data.email}</h3>
+              <h3 className='m-0'>{props.Data.PhoneNumber}</h3>
+              <h3 className='m-0'>{props.Data.ShopName}</h3>
+              <h3 className='m-0'>{props.Data.Address}</h3>
+      
+              <button   className='btn btn-primary' onClick={()=>setTemp(!Temp)}><p style={{color:'white'}}>Update Details</p></button>
       {Temp? <UpdateData Data={props.Data}/>:null
 
       }
-      <div className='row'>
-      
-    </div>
+          </div>
+           {props.Data.Role==="SuperAdmin"?
+
+           <div  className='col-md-6'>
+                <h1>Area Ways Charges</h1>
+                {se?<p>data found</p>:<p>No Data</p>
+
+                }
+          </div>:null
+
+           }
+      </div>
+               
+       
     </div>
     
      
