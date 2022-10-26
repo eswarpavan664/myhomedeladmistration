@@ -9,7 +9,7 @@ const { Meta } = Card;
 
 function MyItems(props) {
     const [Items,setItems] = useState([]);
-    console.log(props.id)
+   // console.log(props.id)
     const GetItems=()=>{
       fetch(Ip+'/GetAdminItem?id='+props.id,{
         headers:new Headers({
@@ -20,7 +20,7 @@ function MyItems(props) {
         
          
           setItems(data);
-          console.log(data)
+        //  console.log(data)
        
         }
         )
@@ -29,7 +29,7 @@ function MyItems(props) {
     useEffect(()=>{
       GetItems();
     },[Temp])
-    console.log("sdkasn= ",Items)
+   // console.log("sdkasn= ",Items)
   return (
     <>
       {Items.length>0?
@@ -62,7 +62,7 @@ function MyItems(props) {
 
 
 function ItemCards(props){
-    console.log(props.ProductImage)
+   // console.log(props.ProductImage)
     var ur=props.ProductImage
 
     const DeleteItem=()=>{

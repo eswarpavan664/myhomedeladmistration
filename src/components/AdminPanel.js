@@ -26,7 +26,9 @@ function SuperAdminPanel(props) {
         <li class="nav-item">
           <a class="nav-link active"  onClick={()=>props.changer("Profile")}>Profile</a>
         </li>
-        
+        <li class="nav-item">
+          <a class="nav-link active"  onClick={()=>props.changer("Delivery charges")}>Delivery charges</a>
+        </li>
         <li class="nav-item">
           <a class="nav-link active" href="#" tabindex="-1" aria-disabled="true" onClick={()=>props.changer("Add Admins")}>Add/Admin</a>
         </li>

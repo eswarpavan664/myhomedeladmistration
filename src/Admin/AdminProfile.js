@@ -19,36 +19,12 @@ function AdminProfile(props) {
 
  const [charges,setcharges] =useState([]);
  const [se,setter]=useState(false);
- const GetCharges=()=>{
-//GetAreaCharges
-
  
-fetch(Ip+'/GetAllCharges',{
-  headers:new Headers({
-    Authorization:"Bearer " 
-  })
-  }).then(res=>res.json())
-  .then(data=>{ 
+
   
    
    
-    console.log("data = ",data);
-    if(data.Status==="No"){
-      setter(false)
-    }
-    else{
-      setter(true)
-      setcharges(data);
-    }
-     
-  }
-  )
- }
  
-
- useEffect(()=>{
-  GetCharges();
- })
 
 const [Temp,setTemp] =useState(false);
   return (

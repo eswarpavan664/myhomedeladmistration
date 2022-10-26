@@ -31,6 +31,7 @@ import Users from '../components/Users';
 import Loader from '../components/Loader';
 import {AdminPanel,SuperAdminPanel} from '../components/AdminPanel';
 import MainDashBoardScreen from './MainDashBoardScreen';
+import DeliveryCharges from '../components/DeliveryCharges';
   
 const { Header, Content, Footer, Sider } = Layout;
 function getItem(label, key, icon, children) {
@@ -69,7 +70,7 @@ function Dashboard(){
  }
 
   const [UserData,setData] = useState("")
- console.log("hhhg")
+ //console.log("hhhg")
   const  GetData = async ()=>{
      const token = await  localStorage.getItem("token")
      console.log("Dashboard = "+token)
@@ -87,12 +88,12 @@ function Dashboard(){
       
      setData(data);
      
-          console.log("admin data  = = ",data);
+         // console.log("admin data  = = ",data);
     
    }
    )
   }
-  console.log("hhvdshsavd")
+  //console.log("hhvdshsavd")
   
 useEffect(()=>{
  
@@ -103,14 +104,14 @@ useEffect(()=>{
 
 const Changer=(e)=>{
   setscreen(e);
-  console.log(e);
+  //console.log(e);
 
 }
 
 
 const Chan=(e)=>{
   setOrdertype(e);
-  console.log(e);
+  //console.log(e);
 
 }
 const [Ordertype,setOrdertype] = useState("Pending");
@@ -270,6 +271,11 @@ function ConTent(props)
   if(props.page==="Users" ){
     return(
        <Users page={props.Ordertype} id={props.data.AdminId}/>
+    )
+  }
+  if(props.page==="Delivery charges"){
+    return(
+      <DeliveryCharges Data={props.data}/>
     )
   }
 
