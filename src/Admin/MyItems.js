@@ -20,7 +20,7 @@ function MyItems(props) {
         
          
           setItems(data);
-        //  console.log(data)
+        //console.log("My items - ",data)
        
         }
         )
@@ -34,7 +34,7 @@ function MyItems(props) {
     <>
       {Items.length>0?
         <div class="container-fluid">
-          <div class="row mt-5 text-center m-0 p-0">
+          <div class="row mt-5   m-0 p-0">
           {Items.map((item)=>(
           
           <ItemCards 
@@ -44,6 +44,8 @@ function MyItems(props) {
                ItemDiscription={item.ItemDiscription}
                _id={item._id}
               ItemStatus={item.ItemStatus}
+              DiscountPrice={item.DiscountPrice}
+
                setTemp={setTemp}
                 /> 
           ))
@@ -65,6 +67,13 @@ function ItemCards(props){
    // console.log(props.ProductImage)
     var ur=props.ProductImage
 
+
+    
+    const [Itemname,setItemname]=useState(props.Name);
+    const [Itemprice,setItemprice]=useState(props.ItemPrice);
+    const [Discountprice,setDiscountprice]=useState(props.DiscountPrice)
+
+
     const DeleteItem=()=>{
         fetch(Ip+'/deleteItem?id='+props._id,{
             headers:new Headers({
@@ -81,8 +90,8 @@ function ItemCards(props){
             )
     }
   
-  
-
+  const [Temp,setTemp]=useState(false);
+ 
 
     const UpdateItemStatus=(k)=>{
        
@@ -115,8 +124,115 @@ function ItemCards(props){
 
 const updateItemDetails=()=>{
 
+  fetch(Ip+"/UpdateItemDetails",{
+    method:"PUT",
+    headers: {
+     'Content-Type': 'application/json'
+   },
+   body:JSON.stringify({
+    "Id":props._id,
+    "ItemName":Itemname,
+    "ItemPrice":Itemprice,
+    "DiscountPrice":Discountprice
+ 
+   })
+  })
+  .then(res=> {
+
+      alert("Updated...");
+      setTemp(false);
+      props.setTemp("Done Agin Agin Agin");
+  })
 }
     return(
+
+
+<div className="container">
+  <div className='row'>
+  <div className='col-md-6'>
+  <div className="row justify-content-center align-items-center">
+    <div className="col-md-8">
+      <div className='row '>
+          <div className="col-6">
+              <img class="card-img-top" src={ur} alt="Card image cap" />
+      
+          </div>
+          <div className="col-6">
+                 {Temp?
+                  <>
+                    <input type={"text"} value={Itemname}      onChange={(e)=>setItemname(e.target.value)} placeholder="Item Name"/>
+                    <input type={"text"} value={Itemprice}     onChange={(e)=>setItemprice(e.target.value)} placeholder="Item Price"/>
+                    <input type={"text"} value={Discountprice} onChange={(e)=>setDiscountprice(e.target.value)} placeholder="Discount Price"/>
+                  </>
+                  :
+                  <>
+                  <p class="text-truncate font-weight-bold">{props.Name}</p>
+                  <p class="text-danger">Price - ₹{props.ItemPrice}</p>
+                  <p class="text-danger">Discount Price- ₹{props.DiscountPrice}</p>
+                  </>
+
+                 }
+            
+          </div>
+      </div>
+    </div>
+    <div className="col-md-4 ">
+             <div className='row justify-content-between '>
+              {!Temp?
+                <button class="btn btn-primary col-4 col-md-12" onClick={DeleteItem}>Delete</button>
+            :null
+                
+              }  
+              {Temp?
+                <button class="btn btn-success  col-4 col-md-12" onClick={updateItemDetails}>Update</button>
+               
+              :
+              <button class="btn btn-success  col-4 col-md-12" onClick={()=>setTemp(true)}>Edit</button>
+               
+              }
+               
+             {!Temp?
+              <>
+              {props.ItemStatus==="true"?
+
+                    <>
+                    <button class="btn btn-danger  col-4 col-md-12 " onClick={()=>UpdateItemStatus("false")}>Disable</button>
+                    </>
+                    :
+                    <>
+                                
+                    <button class="btn btn-warning   col-4 col-md-12" onClick={()=>UpdateItemStatus("true")}>Enable</button>
+                    </>
+                              
+                    }
+              </>:null
+
+             }
+             </div>
+    </div>
+  </div>
+  </div>
+      
+  </div>
+</div>
+     
+
+
+ 
+                  
+    )
+  }
+export default MyItems;
+
+
+/*
+
+ 
+
+
+
+
+  
       <div class="col-md-3">
       <div class="card p-2 cd ml-3" style={{width: '25rem',border: '2px solid hotpink'}}>
           <img class="card-img-top" src={ur} alt="Card image cap" />
@@ -147,10 +263,4 @@ const updateItemDetails=()=>{
           </div>
         </div>
   </div>
-
-
- 
-                  
-    )
-  }
-export default MyItems;
+*/
