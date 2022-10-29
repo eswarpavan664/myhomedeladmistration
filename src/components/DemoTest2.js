@@ -156,9 +156,11 @@ function DemoTest2(props) {
   return (
     <div className="container">
      <Helmet>
-                  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
-                  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>   </Helmet>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+ </Helmet>
     
       {/*<form onSubmit={onSubmitHandler}>
         <input type="file" onChange={fileChangeHandler} />
@@ -181,30 +183,35 @@ function DemoTest2(props) {
             <div className="col-12">
 
             <div class="dropdown col-12">
-                <button   class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  {VegOrNon}
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" href="#" onClick={()=>setVegOrNon("Veg")}>Veg</a>
-                  <a class="dropdown-item" href="#" onClick={()=>setVegOrNon("Non Veg")}>Non Veg</a>
-                   
-                </div>
-                      
+            <div class="dropdown">
+                <a class="btn btn-secondary dropdown-toggle"   role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                {VegOrNon}
+                </a>
+
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                  <li> <a class="dropdown-item"  onClick={()=>setVegOrNon("Veg")}>Veg</a></li>
+              
+                  <li><a class="dropdown-item"   onClick={()=>setVegOrNon("Non Veg")}>Non Veg</a></li>
+                </ul>
+              </div>
              </div>
           
                 <div class="dropdown  col-12 mt-3 ">
-                      <button class="btn btn-secondary dropdown-toggle"   type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        {Type}
-                      </button>
-                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#" onClick={()=>setType("Rice")}>Rice</a>
-                        <a class="dropdown-item" href="#" onClick={()=>setType("Biryani")}>Biryani</a>
-                        <a class="dropdown-item" href="#" onClick={()=>setType("Ice Cream")}>Ice Cream</a>
-                        <a class="dropdown-item" href="#" onClick={()=>setType("Curry")}>Curry</a>
-                        <a class="dropdown-item" href="#" onClick={()=>setType("Bakery")}>Bakery</a>
-                        <a class="dropdown-item" href="#" onClick={()=>setType("Juice")}>Juice</a>
-                        <a class="dropdown-item" href="#" onClick={()=>setType("Starters")}>Starters</a>
-                      </div>
+                <div class="dropdown">
+                  <a class="btn btn-secondary dropdown-toggle"   role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                    {Type}
+                  </a>
+
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                        <li><a class="dropdown-item"  onClick={()=>setType("Rice")}>Rice</a></li>
+                                        <li><a class="dropdown-item"   onClick={()=>setType("Biryani")}>Biryani</a></li>
+                                        <li><a class="dropdown-item"   onClick={()=>setType("Ice Cream")}>Ice Cream</a></li>
+                                        <li><a class="dropdown-item"   onClick={()=>setType("Curry")}>Curry</a></li>
+                                        <li><a class="dropdown-item"   onClick={()=>setType("Bakery")}>Bakery</a></li>
+                                        <li><a class="dropdown-item"   onClick={()=>setType("Juice")}>Juice</a></li>
+                                        <li><a class="dropdown-item"   onClick={()=>setType("Starters")}>Starters</a></li>
+                  </ul>
+                </div>
                             
                 </div>
             </div>
