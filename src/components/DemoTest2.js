@@ -16,6 +16,15 @@ function DemoTest2(props) {
   const [progresspercent, setProgresspercent] = useState(0);
 
 
+
+  const [ItemName,setItemName] = useState("");
+  const [Price,setPrice] =useState("");
+  const [DisPrice,setDisPrice] =useState("");
+  const [Discription,setDisccription] =useState("");
+  const [VegOrNon,setVegOrNon] = useState("Select Veg/Nonveg");
+  const [Type,setType] =useState("Item Type")
+  const [HalfPrice,setHalfPrice] =useState("");
+
   var p = null;
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -106,6 +115,15 @@ function DemoTest2(props) {
     .then(res=>{
   
       console.log("done",res);
+      setItemName("");
+      setDisccription("");
+      setPrice("");
+      setFileData("");
+      setType("Item Type");
+      setVegOrNon("Select Veg/Nonveg")
+      setDisPrice("");
+      setHalfPrice("");
+      alert("Item Added...")
        
     })
   
@@ -131,28 +149,15 @@ function DemoTest2(props) {
       .catch((err) => {
         console.log(err.message);
       });*/
-      setItemName("");
-      setDisccription("");
-      setPrice("");
-      setFileData("");
-      setType("Item Type");
-      setVegOrNon("Select Veg/Nonveg")
-      setDisPrice("");
-      setHalfPrice("");
-      alert("Item Added...")
+     
       }
       else{
         alert("Please Provide all Required Fields")
       }
   };
 
-  const [ItemName,setItemName] = useState("");
-  const [Price,setPrice] =useState("");
-  const [DisPrice,setDisPrice] =useState("");
-  const [Discription,setDisccription] =useState("");
-  const [VegOrNon,setVegOrNon] = useState("Non Veg");
-  const [Type,setType] =useState("Rice")
-  const [HalfPrice,setHalfPrice] =useState("");
+ console.log("veg or non =  ",VegOrNon);
+ console.log("Type = ",Type);
   return (
     <div className="container">
      <Helmet>
@@ -161,7 +166,7 @@ function DemoTest2(props) {
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
  </Helmet>
-    
+         
       {/*<form onSubmit={onSubmitHandler}>
         <input type="file" onChange={fileChangeHandler} />
         <input type="text" value={ItemName} placeholder="enter Item Name" onChange={(e)=>setItemName(e.target.value)}/>
