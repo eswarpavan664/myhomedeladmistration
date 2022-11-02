@@ -95,8 +95,8 @@ function DemoTest2(props) {
       "ShopId":props.id,
       "ItemId":props.id+ItemName,
       "AdminId":props.id+props.ShopName,
-      "ItemType":"Rice",
-      "ItemCategory":"Non Veg",
+      "ItemType":VegOrNon,
+      "ItemCategory":Type,
       "DiscountPrice":DisPrice,
       "ItemStatus":"true",
       "ItemHalfPrice":HalfPrice
