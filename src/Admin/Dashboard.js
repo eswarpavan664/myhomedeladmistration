@@ -72,10 +72,10 @@ function Dashboard(){
   const [UserData,setData] = useState("")
  //console.log("hhhg")
   const  GetData = async ()=>{
-     const token = await  localStorage.getItem("token")
+     const token = await    localStorage.getItem("token")
      console.log("Dashboard = "+token)
      
-   fetch(Ip+'/GetAdmin',{
+   fetch('https://sore-ruby-scarab-boot.cyclic.app/GetAdmin',{
    headers:new Headers({
      Authorization:"Bearer "+token,
      'Content-Type': 'application/json',
@@ -88,12 +88,12 @@ function Dashboard(){
       
      setData(data);
      
-         // console.log("admin data  = = ",data);
+         console.log("admin data  = = ",data);
     
    }
    )
   }
-  //console.log("hhvdshsavd")
+  console.log("hhvdshsavd")
   
 useEffect(()=>{
  

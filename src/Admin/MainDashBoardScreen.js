@@ -3,8 +3,8 @@ import React,{useMemo} from 'react'
 
 import { Chart as ChartJS, registerables } from 'chart.js';
 import { Chart } from 'react-chartjs-2'
+import App from '../components/Statistics'
 ChartJS.register(...registerables);
-
 function MainDashBoardScreen() {
 
  
@@ -21,7 +21,7 @@ function MainDashBoardScreen() {
             </div>
         </div>
         </div>
-    )
+    )  
 }
 
 

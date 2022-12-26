@@ -110,6 +110,8 @@ function Orders(props) {
             id={item._id}
             displaytype={props.Ordertype}
             ShopName={item.ShopName}
+            OrderTime={item.OrderTime}
+
 
                 /> 
        ))
@@ -178,7 +180,8 @@ function ItemCards(props){
                     <div class="col col-12">
                         <div class="row">
                             <div class="col-12">
-                            <h2 style={{color:'green'}}>{props.ShopName}</h2>
+                            <h2 style={{color:'green'}}>{props.ShopName} </h2> 
+                            <h2> Order Time:-    {props.OrderTime}</h2>
                                 <p>Customer Name:- {props.CustomerName}</p>
                                 <p>Contact No:- {props.ContactNo}</p>
  						                    <p>Total Amount:- {props.Amount}</p>
