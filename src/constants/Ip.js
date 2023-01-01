@@ -1,4 +1,4 @@
-export const Ip = "http://192.168.0.111:5000";
+export const Ip = "https://sore-ruby-scarab-boot.cyclic.app";
 
 
 
